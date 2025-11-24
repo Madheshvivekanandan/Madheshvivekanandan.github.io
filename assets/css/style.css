@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-/* Smooth scrolling for anchor links */
+/*Smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
 }
@@ -15,23 +15,30 @@ section {
   scroll-margin-top: 80px;
 }
 
-
 /* Global styles */
 body {
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: "Poppins";
   line-height: 1.6;
   color: #333;
   background-color: #f8f9fa;
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
 }
 
 /* Header and navigation */
-header {
+/* Make header/nav explicitly sticky and full width so it reliably stays at the top while scrolling */
+header,
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   background-color: #1f2937;
-  padding: 1rem 0;
+  padding: 0.75rem 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* subtle backdrop blur for translucency on supported browsers */
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 nav ul {
@@ -53,6 +60,56 @@ nav a.active {
   color: #38bdf8;
   /* sky blue hover */
 }
+.hamburger,.logo {
+  display: none;
+}
+
+
+/* Mobile Navbar Styles */
+@media (max-width: 768px) {
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  /* Position logo on the left */
+  .logo {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  /* Position hamburger on the right */
+  .hamburger {
+    display: block;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Mobile dropdown menu */
+  nav ul {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    background-color: #1f2937;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+}
+
 
 
 /* Hero section */

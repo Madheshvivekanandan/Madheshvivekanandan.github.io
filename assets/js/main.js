@@ -26,14 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fetch GitHub Repos
   fetchGitHubRepos();
 
-  // Add smooth scroll navigation highlighting
-  initializeScrollNavigation();
 });
 
 
 async function fetchGitHubRepos() {
-  const username = "Madheshvivekanandan";
-  const apiURL = `https://api.github.com/users/${username}/repos`;
+  const apiURL = `https://api.github.com/users/Madheshvivekanandan/repos`;
 
   try {
     const response = await fetch(apiURL);
@@ -68,3 +65,12 @@ async function fetchGitHubRepos() {
       repoList.innerHTML = "<p>Unable to load projects right now.</p>";
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
+
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+  });
+});
