@@ -49,7 +49,7 @@ async function fetchGitHubRepos() {
 
     repoList.innerHTML = "";
 
-    repos.slice(0, 6).forEach(repo => {
+    repos.forEach(repo => {
       const repoCard = document.createElement("div");
       repoCard.classList.add("repo-card");
       repoCard.innerHTML = `
@@ -67,37 +67,4 @@ async function fetchGitHubRepos() {
     if (repoList)
       repoList.innerHTML = "<p>Unable to load projects right now.</p>";
   }
-}
-
-// Initialize scroll-based navigation highlighting
-function initializeScrollNavigation() {
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll("nav a[href^='#']");
-
-  function highlightNavigation() {
-    let currentSection = "";
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-
-      // Check if section is in viewport (with offset for header)
-      if (window.scrollY >= sectionTop - 100) {
-        currentSection = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${currentSection}`) {
-        link.classList.add("active");
-      }
-    });
-  }
-
-  // Highlight on scroll
-  window.addEventListener("scroll", highlightNavigation);
-
-  // Highlight on page load
-  highlightNavigation();
 }
