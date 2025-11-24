@@ -1,0 +1,103 @@
+// Wait until the DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
+  if (form) {
+    form.addEventListener("submit", (event) => {
+      // Let HTML5 handle its own validation first
+      if (!form.checkValidity()) {
+        return;
+      }
+
+      // Now perform additional custom validation
+      const message = document.getElementById("message").value.trim();
+
+      if (message.length < 10) {
+        alert("Your message should be at least 10 characters long.");
+        event.preventDefault(); // Stop submission
+        return;
+      }
+
+      alert("Thank you! Your message has been sent successfully.");
+      form.reset(); // Clear form after submission
+      event.preventDefault(); // Prevent actual sending for demo
+    });
+  }
+
+  // Fetch GitHub Repos
+  fetchGitHubRepos();
+
+  // Add smooth scroll navigation highlighting
+  initializeScrollNavigation();
+});
+
+
+async function fetchGitHubRepos() {
+  const username = "Madheshvivekanandan";
+  const apiURL = `https://api.github.com/users/${username}/repos`;
+
+  try {
+    const response = await fetch(apiURL);
+    if (!response.ok) {
+      throw new Error("Failed to fetch repositories");
+    }
+
+    const repos = await response.json();
+    console.log("Fetched repos:", repos);
+    const repoList = document.getElementById("repo-list");
+
+    if (!repoList) return; // if not on project page, exit
+
+    repoList.innerHTML = "";
+
+    repos.slice(0, 6).forEach(repo => {
+      const repoCard = document.createElement("div");
+      repoCard.classList.add("repo-card");
+      repoCard.innerHTML = `
+        <h3>${repo.name}</h3>
+        <p>${repo.description || "No description provided."}</p>
+        <p>⭐ Stars: ${repo.stargazers_count} | 🍴 Forks: ${repo.forks_count}</p>
+        <a href="${repo.html_url}" target="_blank">View on GitHub</a>
+      `;
+      repoList.appendChild(repoCard);
+    });
+
+  } catch (error) {
+    console.error("Error fetching repos:", error);
+    const repoList = document.getElementById("repo-list");
+    if (repoList)
+      repoList.innerHTML = "<p>Unable to load projects right now.</p>";
+  }
+}
+
+// Initialize scroll-based navigation highlighting
+function initializeScrollNavigation() {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll("nav a[href^='#']");
+
+  function highlightNavigation() {
+    let currentSection = "";
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+
+      // Check if section is in viewport (with offset for header)
+      if (window.scrollY >= sectionTop - 100) {
+        currentSection = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${currentSection}`) {
+        link.classList.add("active");
+      }
+    });
+  }
+
+  // Highlight on scroll
+  window.addEventListener("scroll", highlightNavigation);
+
+  // Highlight on page load
+  highlightNavigation();
+}
