@@ -1,0 +1,174 @@
+/* RADIAL FLOATING NEURAL HUB MENU STYLES */
+.neural-hub {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 60px;
+  height: 60px;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Central Trigger Button */
+.hub-trigger {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: var(--shadow-card), 0 0 10px rgba(0, 240, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: transform var(--transition-bounce), border-color var(--transition-normal);
+}
+
+.hub-trigger:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-cyan);
+  box-shadow: var(--shadow-neon-cyan), var(--shadow-card);
+  cursor: pointer;
+}
+
+.hub-icon-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Glowing Core Dot */
+.hub-dot {
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent-cyan);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-neon-cyan);
+  transition: transform var(--transition-normal), background-color var(--transition-normal);
+}
+
+.neural-hub.active .hub-dot {
+  background-color: var(--accent-amber);
+  box-shadow: var(--shadow-neon-amber);
+  transform: scale(0.8) rotate(45deg);
+  border-radius: 2px; /* Morph dot into square */
+}
+
+/* Outer SVG Tracking Ring */
+.hub-ring-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* Start progress at 12 o'clock */
+  pointer-events: none;
+}
+
+.hub-ring-svg circle {
+  transition: stroke-dashoffset var(--transition-normal);
+}
+
+/* Hidden Radial Sub-Items Container */
+.hub-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  pointer-events: none;
+  z-index: 5;
+  transition: transform var(--transition-bounce), opacity var(--transition-normal);
+  opacity: 0;
+}
+
+.neural-hub.active .hub-menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Individual Radial Item Orbit Nodes */
+.hub-item {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  z-index: 5;
+  transition: transform var(--transition-bounce), border-color var(--transition-normal), color var(--transition-normal), background-color var(--transition-normal);
+  box-shadow: var(--shadow-card);
+  transform: translate(-50%, -50%) scale(0.5);
+  top: 50%;
+  left: 50%;
+}
+
+.hub-item span {
+  transition: transform var(--transition-normal);
+}
+
+.hub-item:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-neon-cyan);
+  cursor: pointer;
+}
+
+.hub-item:hover span {
+  transform: scale(1.15);
+}
+
+.hub-item.active {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.05);
+  text-shadow: var(--shadow-neon-cyan);
+  font-weight: bold;
+}
+
+/* Coordinates/Positions for each of the 6 Orbit items (radial math) */
+/* R = 95px from center */
+.neural-hub.active .hub-item[data-index="1"] { transform: translate(-50%, -50%) translate(-95px, 0px) scale(1); } /* Left */
+.neural-hub.active .hub-item[data-index="2"] { transform: translate(-50%, -50%) translate(-82px, -48px) scale(1); } /* Top-Left */
+.neural-hub.active .hub-item[data-index="3"] { transform: translate(-50%, -50%) translate(-48px, -82px) scale(1); } /* Top-Left-Mid */
+.neural-hub.active .hub-item[data-index="4"] { transform: translate(-50%, -50%) translate(0px, -95px) scale(1); } /* Top */
+.neural-hub.active .hub-item[data-index="5"] { transform: translate(-50%, -50%) translate(48px, -82px) scale(1); } /* Top-Right-Mid */
+.neural-hub.active .hub-item[data-index="6"] { transform: translate(-50%, -50%) translate(82px, -48px) scale(1); } /* Top-Right */
+
+/* Floating Status Tooltip */
+.hub-tooltip {
+  position: absolute;
+  right: 80px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  background: rgba(10, 14, 26, 0.9);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  box-shadow: var(--shadow-card);
+}
+
+.neural-hub:hover .hub-tooltip {
+  opacity: 1;
+}

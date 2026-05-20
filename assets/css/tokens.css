@@ -1,0 +1,54 @@
+/* DESIGN TOKENS - NEURAL TERMINAL OPERATING SYSTEM */
+:root {
+  /* Color Palette - Deep Cyberpunk & Tech Aesthetics */
+  --bg-deep: #05070f;
+  --bg-surface: #0a0e1a;
+  --bg-card: #111625;
+  --bg-card-hover: #171e32;
+  --bg-overlay: rgba(5, 7, 15, 0.85);
+  
+  /* Primary Glowing Accents */
+  --accent-cyan: #00f0ff;
+  --accent-cyan-rgb: 0, 240, 255;
+  --accent-amber: #ffae42;
+  --accent-amber-rgb: 255, 174, 66;
+  --accent-violet: #8b5cf6;
+  --accent-violet-rgb: 139, 92, 246;
+  --accent-emerald: #10b981;
+  --accent-emerald-rgb: 16, 185, 129;
+  --accent-crimson: #ef4444;
+  --accent-crimson-rgb: 239, 68, 68;
+
+  /* Typography Colors */
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  --text-dark: #0f172a;
+
+  /* Typography Scales */
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Borders & Shadows */
+  --border-glow: 1px solid rgba(0, 240, 255, 0.2);
+  --border-card: 1px solid rgba(255, 255, 255, 0.05);
+  --border-card-hover: 1px solid rgba(0, 240, 255, 0.3);
+  
+  --shadow-neon-cyan: 0 0 15px rgba(0, 240, 255, 0.25);
+  --shadow-neon-amber: 0 0 15px rgba(255, 174, 66, 0.25);
+  --shadow-neon-violet: 0 0 15px rgba(139, 92, 246, 0.25);
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+
+  /* Border Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Transition Speeds */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

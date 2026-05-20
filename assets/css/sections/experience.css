@@ -1,0 +1,200 @@
+/* EXPERIENCE SECTION (DATA PIPELINE TIMELINE) STYLE */
+.experience-section {
+  position: relative;
+  z-index: 10;
+  background-color: rgba(5, 8, 16, 0.2);
+}
+
+.pipeline-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 50px auto 0;
+  padding: 20px 0;
+}
+
+/* Vertical central flow pipe */
+.pipeline-flow-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 240, 255, 0.05),
+    rgba(0, 240, 255, 0.4) 15%,
+    rgba(139, 92, 246, 0.4) 50%,
+    rgba(255, 174, 66, 0.4) 85%,
+    rgba(255, 174, 66, 0.05)
+  );
+  border-radius: var(--radius-full);
+  z-index: 1;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+}
+
+/* Animated Flowing Particles in Pipeline */
+.pipeline-particles {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, var(--accent-cyan), transparent);
+  animation: flow-down 6s infinite linear;
+  filter: blur(1px);
+}
+
+@keyframes flow-down {
+  0% { top: -100px; background: linear-gradient(to bottom, transparent, var(--accent-cyan), transparent); }
+  50% { background: linear-gradient(to bottom, transparent, var(--accent-violet), transparent); }
+  100% { top: 100%; background: linear-gradient(to bottom, transparent, var(--accent-amber), transparent); }
+}
+
+/* Timeline Cards Placement */
+.pipeline-nodes {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.pipeline-node-card {
+  position: relative;
+  width: 45%;
+  background: var(--bg-card);
+  border: var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  transition: transform var(--transition-bounce), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  box-shadow: var(--shadow-card);
+}
+
+.pipeline-node-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Color Accent Variations for timeline nodes */
+.pipeline-node-card.accent-cyan {
+  border-left: 3px solid var(--accent-cyan);
+}
+.pipeline-node-card.accent-cyan:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: var(--shadow-neon-cyan) / 3, var(--shadow-card);
+}
+
+.pipeline-node-card.accent-violet {
+  border-left: 3px solid var(--accent-violet);
+}
+.pipeline-node-card.accent-violet:hover {
+  border-color: var(--accent-violet);
+  box-shadow: var(--shadow-neon-violet) / 3, var(--shadow-card);
+}
+
+.pipeline-node-card.accent-amber {
+  border-left: 3px solid var(--accent-amber);
+}
+.pipeline-node-card.accent-amber:hover {
+  border-color: var(--accent-amber);
+  box-shadow: var(--shadow-neon-amber) / 3, var(--shadow-card);
+}
+
+/* Left/Right Alternate Spacing */
+.pipeline-node-card:nth-child(odd) {
+  align-self: flex-start;
+}
+
+.pipeline-node-card:nth-child(even) {
+  align-self: flex-end;
+}
+
+/* Central connecting joints/orbs */
+.pipeline-joint {
+  position: absolute;
+  top: 35px;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-surface);
+  border: 2px solid var(--text-secondary);
+  z-index: 3;
+}
+
+.pipeline-node-card.accent-cyan .pipeline-joint { border-color: var(--accent-cyan); box-shadow: var(--shadow-neon-cyan); }
+.pipeline-node-card.accent-violet .pipeline-joint { border-color: var(--accent-violet); box-shadow: var(--shadow-neon-violet); }
+.pipeline-node-card.accent-amber .pipeline-joint { border-color: var(--accent-amber); box-shadow: var(--shadow-neon-amber); }
+
+.pipeline-node-card:nth-child(odd) .pipeline-joint {
+  right: -10%; /* Sit on top of pipeline */
+  transform: translateX(50%);
+}
+
+.pipeline-node-card:nth-child(even) .pipeline-joint {
+  left: -10%; /* Sit on top of pipeline */
+  transform: translateX(-50%);
+}
+
+/* Card typography & contents */
+.node-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.node-company {
+  font-weight: bold;
+}
+
+.pipeline-node-card.accent-cyan .node-company { color: var(--accent-cyan); }
+.pipeline-node-card.accent-violet .node-company { color: var(--accent-violet); }
+.pipeline-node-card.accent-amber .node-company { color: var(--accent-amber); }
+
+.node-role {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.node-loc {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.node-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.node-bullets li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 15px;
+}
+
+.node-bullets li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.pipeline-node-card.accent-cyan .node-bullets li::before { color: var(--accent-cyan); }
+.pipeline-node-card.accent-violet .node-bullets li::before { color: var(--accent-violet); }
+.pipeline-node-card.accent-amber .node-bullets li::before { color: var(--accent-amber); }
