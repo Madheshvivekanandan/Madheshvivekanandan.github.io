@@ -1,0 +1,130 @@
+/* SKILLS SECTION (CONSTELLATION ORBITS) STYLE */
+.skills-section {
+  position: relative;
+  z-index: 10;
+}
+
+.skills-orbit-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+/* Category panel */
+.skill-cluster-panel {
+  background: var(--bg-card);
+  border: var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 25px;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--transition-normal), transform var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-cluster-panel::before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(circle at 100% 0%, rgba(0, 240, 255, 0.03), transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.skill-cluster-panel:hover {
+  border-color: rgba(0, 240, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.cluster-header {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cluster-dot-count {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* Orbit Node Containers inside panels */
+.cluster-orbs-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 2;
+}
+
+/* Individual glowing skill nodes */
+.skill-orb-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.skill-orb-name {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.skill-bar-wrap {
+  width: 100px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  width: 0; /* Dynamic loading in skills.js */
+  transition: width 1.5s cubic-bezier(0.1, 0.8, 0.25, 1);
+}
+
+/* Colors for levels */
+.level-expert {
+  background: var(--accent-cyan);
+  box-shadow: var(--shadow-neon-cyan);
+}
+
+.level-advanced {
+  background: var(--accent-violet);
+  box-shadow: var(--shadow-neon-violet);
+}
+
+.level-intermediate {
+  background: var(--accent-amber);
+  box-shadow: var(--shadow-neon-amber);
+}
+
+.level-beginner {
+  background: var(--text-muted);
+}
+
+.skill-orb-level {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}

@@ -1,0 +1,244 @@
+/* HIGH-FIDELITY RESPONSIVE LAYOUTS OVERRIDES */
+
+/* ==========================================================================
+   LAPTOPS / LARGE TABLETS (<= 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  section {
+    padding: 80px 6% 60px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-layout {
+    gap: 40px;
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .profile-spec-card {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .projects-layout {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 20px;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+}
+
+/* ==========================================================================
+   PHONES / SMALL TABLETS (<= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  section {
+    padding: 70px 5% 70px; /* Leave room for bottom bar */
+  }
+
+  .section-title-mono {
+    font-size: 1.4rem;
+  }
+
+  /* 1. Hero Layout Stacked */
+  .hero-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-content {
+    align-items: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-stats {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .photo-hex-frame {
+    width: 220px;
+    height: 250px;
+  }
+
+  .photo-hex-frame::after {
+    bottom: -18px;
+    font-size: 0.6rem;
+  }
+
+  /* 2. Experience Timeline Stacked */
+  .pipeline-flow-line {
+    left: 20px;
+  }
+
+  .pipeline-node-card {
+    width: calc(100% - 40px);
+    align-self: flex-end !important;
+  }
+
+  .pipeline-joint {
+    left: -20px !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* 3. Projects Mobile Overrides: Map transforms into list */
+  .projects-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .projects-interactive-map {
+    display: none !important; /* Hide map and SVGs */
+  }
+
+  .project-details-panel {
+    min-height: auto;
+  }
+
+  /* 4. Radial Navigation morphs into Fixed App Tab Bar */
+  .neural-hub {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 60px;
+    background: rgba(10, 14, 26, 0.95);
+    border-top: 1px solid rgba(0, 240, 255, 0.15);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+    padding: 0;
+    z-index: 99999;
+  }
+
+  .hub-trigger {
+    display: none !important; /* Hide central button */
+  }
+
+  .hub-menu {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    height: 100%;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .hub-item {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-muted);
+  }
+
+  .hub-item span {
+    font-size: 0.85rem;
+  }
+
+  .hub-item.active {
+    color: var(--accent-cyan);
+    text-shadow: var(--shadow-neon-cyan);
+    background: transparent;
+  }
+  
+  .hub-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    width: 16px;
+    height: 2px;
+    background-color: var(--accent-cyan);
+    box-shadow: var(--shadow-neon-cyan);
+    border-radius: var(--radius-full);
+  }
+
+  .hub-tooltip {
+    display: none !important; /* Hide tooltip on mobile */
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .terminal-footer {
+    padding-bottom: 80px; /* Space for mobile tab bar */
+  }
+}
+
+/* ==========================================================================
+   SMALL PHONES (<= 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-terminal, .btn-terminal-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pipeline-node-card {
+    padding: 20px;
+  }
+
+  .node-role {
+    font-size: 1.15rem;
+  }
+  
+  .repos-drawer {
+    padding: 25px 20px;
+  }
+}

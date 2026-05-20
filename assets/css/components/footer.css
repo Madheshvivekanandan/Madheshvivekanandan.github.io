@@ -1,0 +1,36 @@
+/* TERMINAL FOOTER COMPONENT */
+.terminal-footer {
+  width: 100%;
+  padding: 30px 10%;
+  background: #05070e;
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-left, .footer-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-container .divider {
+  color: rgba(255, 255, 255, 0.05);
+}
+
+.green-text {
+  color: var(--accent-emerald);
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.2);
+}
