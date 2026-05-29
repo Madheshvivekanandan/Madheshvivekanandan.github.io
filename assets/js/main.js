@@ -48,9 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
       container.appendChild(card);
+
+      // Register dynamically created card with scroll reveal engine
+      if (window.ScrollRevealEngine) {
+        window.ScrollRevealEngine.observe(card);
+      }
     });
 
-    // Fire scroll reveals watch since new items are dynamically loaded
+    // Refresh any remaining unregistered reveal elements
     if (window.ScrollRevealEngine) {
       window.ScrollRevealEngine.refresh();
     }

@@ -1,25 +1,33 @@
 /* SCROLL ENGINE - INTERSECTION REVEALS */
-document.addEventListener("DOMContentLoaded", () => {
-  const revealElements = document.querySelectorAll(".reveal-element");
-
+(function () {
   const revealOptions = {
-    root: null, // Viewport
-    rootMargin: "0px 0px -10% 0px", // Trigger slightly before element is in full view
-    threshold: 0.15 // 15% visibility required
+    root: null,
+    rootMargin: "0px 0px -10% 0px",
+    threshold: 0.15
   };
 
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("active");
-        
-        // Stop observing once revealed to preserve performance
         observer.unobserve(entry.target);
       }
     });
   }, revealOptions);
 
-  revealElements.forEach(el => {
-    revealObserver.observe(el);
+  // Expose globally so dynamic scripts can register newly added elements
+  window.ScrollRevealEngine = {
+    observe: (el) => revealObserver.observe(el),
+    refresh: () => {
+      document.querySelectorAll(".reveal-element:not(.active)").forEach(el => {
+        revealObserver.observe(el);
+      });
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".reveal-element").forEach(el => {
+      revealObserver.observe(el);
+    });
   });
-});
+})();
