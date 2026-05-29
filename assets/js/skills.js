@@ -57,6 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     container.appendChild(panel);
+
+    // Register with scroll reveal engine (runs after scroll-engine.js initializes)
+    if (window.ScrollRevealEngine) {
+      window.ScrollRevealEngine.observe(panel);
+    }
   });
 
   // Intersection Observer to animate skill fills on entry
