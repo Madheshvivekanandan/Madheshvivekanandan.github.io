@@ -1,11 +1,17 @@
-/* CONTACT TERMINAL SIGNAL TRANSMITTER SCRIPT */
+/* CONTACT TERMINAL SIGNAL TRANSMITTER SCRIPT
+ * Delivers messages via Web3Forms (server-side email relay) so submissions
+ * reach the owner's inbox with no dependency on the visitor's email client.
+ * Falls back to a mailto: link only if the network request fails. */
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
   const statusEl = document.getElementById("form-status");
   const submitBtn = document.getElementById("form-submit-btn");
   const btnLabel = submitBtn.querySelector(".btn-label");
 
-  form.addEventListener("submit", (e) => {
+  const ACCESS_KEY = (window.SITE_CONFIG && window.SITE_CONFIG.WEB3FORMS_ACCESS_KEY) || "";
+  const OWNER_EMAIL = "madheshvivekanandan@gmail.com";
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const name = document.getElementById("contact-name").value.trim();
@@ -17,43 +23,57 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Initiate signal transmission sequence
+    // Initiate signal transmission sequence (aesthetic terminal logs)
     disableForm(true);
     btnLabel.innerText = "> TRANSMITTING_SIGNAL...";
     showStatus("📡 ESTABLISHING SECURE OUTBOUND LINK...", "info");
+    await delay(900);
+    showStatus("⚡ PACKETIZING PAYLOAD PROTOCOLS...", "info");
 
-    // Dynamic typewriter log states
-    setTimeout(() => {
-      showStatus("⚡ PACKETIZING PAYLOAD PROTOCOLS...", "info");
-      
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          subject: `Outbound Port Signal from ${name}`,
+          from_name: name,
+          name,
+          email,
+          message,
+        }),
+      });
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Transmission rejected by relay node.");
+      }
+
+      // Delivered to the owner's inbox — no further action by the visitor.
+      showStatus("✓ SIGNAL BROADCAST COMPLETE. PAYLOAD DELIVERED TO CORE.", "success");
+      btnLabel.innerText = "> TRANSMISSION_LAUNCHED";
+      form.reset();
+    } catch (err) {
+      // Relay unreachable — degrade gracefully to the visitor's mail client.
+      showStatus("⚠️ RELAY UNREACHABLE — REROUTING VIA LOCAL MAIL CLIENT...", "error");
+      const subject = encodeURIComponent(`Outbound Port Signal from ${name}`);
+      const body = encodeURIComponent(`Sender: ${name} (${email})\n\nTransmission Payload:\n${message}`);
+      window.location.href = `mailto:${OWNER_EMAIL}?subject=${subject}&body=${body}`;
+      btnLabel.innerText = "> FALLBACK_CHANNEL_OPENED";
+    } finally {
       setTimeout(() => {
-        // We will submit using a fetch request, with an auto-fail fallback to direct mailto client!
-        // To allow the user to easily plug in their own Web3Forms or Formspree access key, we search for a key.
-        // As a default robust fallback, we immediately format the mailto and trigger it.
-        
-        const mailtoSubject = encodeURIComponent(`Outbound Port Signal from ${name}`);
-        const mailtoBody = encodeURIComponent(`Sender: ${name} (${email})\n\nTransmission Payload:\n${message}`);
-        const mailtoUrl = `mailto:madheshvivekanandan@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
-        
-        // Open local email client
-        window.location.href = mailtoUrl;
-
-        // Display highly aesthetic successful logs
-        showStatus("✓ SIGNAL BROADCAST COMPLETE. OUTBOUND PORT CLOSED.", "success");
-        btnLabel.innerText = "> TRANSMISSION_LAUNCHED";
-        form.reset();
-        
-        setTimeout(() => {
-          disableForm(false);
-          btnLabel.innerText = "> INITIATE_TRANSMISSION";
-        }, 3000);
-
-      }, 1200);
-    }, 1000);
+        disableForm(false);
+        btnLabel.innerText = "> INITIATE_TRANSMISSION";
+      }, 3000);
+    }
   });
 
+  function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   function disableForm(disabled) {
-    form.querySelectorAll(".form-input").forEach(input => {
+    form.querySelectorAll(".form-input").forEach((input) => {
       input.disabled = disabled;
     });
     submitBtn.disabled = disabled;
