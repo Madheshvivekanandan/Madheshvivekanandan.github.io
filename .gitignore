@@ -1,0 +1,35 @@
+# --- macOS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# --- Editors / IDEs ---
+.vscode/*
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Environment / secrets ---
+# Note: this static site cannot read .env at runtime (no build step), but ignore
+# any local env files so they never get committed by accident.
+.env
+.env.*
+*.local
+
+# --- Logs ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Dependencies (only if tooling is ever added) ---
+node_modules/
+
+# --- OS / misc ---
+Thumbs.db
+.cache/
+tmp/
