@@ -102,18 +102,21 @@
     transform: translateX(-50%) !important;
   }
 
-  /* 3. Projects Mobile Overrides: Map transforms into list */
+  /* 3. Projects Mobile Overrides: interactive map + click-to-decode panel
+        are replaced by a self-contained stacked list of project cards. */
   .projects-layout {
     grid-template-columns: 1fr;
     gap: 30px;
+    min-height: 0;
   }
 
-  .projects-interactive-map {
-    display: none !important; /* Hide map and SVGs */
-  }
-
+  .projects-interactive-map,
   .project-details-panel {
-    min-height: auto;
+    display: none !important; /* Hide map/SVGs and the decoder panel */
+  }
+
+  .projects-mobile-list {
+    display: flex; /* Reveal the tappable project list */
   }
 
   /* 4. Radial Navigation morphs into Fixed App Tab Bar */
