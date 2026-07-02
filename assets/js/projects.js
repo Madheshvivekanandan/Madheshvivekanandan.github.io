@@ -71,6 +71,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Render Mobile List (map/SVG interactions are hidden on small screens; CSS decides visibility)
+  const mobileList = document.getElementById("projects-mobile-list");
+  if (mobileList) {
+    projectsData.forEach(proj => {
+      const pos = nodePositions[proj.id];
+      const cat = pos ? pos.cat : "ai";
+      const glyph = pos ? pos.glyph : "◆";
+
+      const card = document.createElement("article");
+      card.className = `mobile-project-card cat-${cat}`;
+
+      const techPills = proj.tech
+        .map(t => `<span class="tech-pill">${t}</span>`)
+        .join("");
+      const bullets = proj.highlights
+        .map(h => `<li>${h}</li>`)
+        .join("");
+      const action =
+        proj.type === "internal"
+          ? `<div class="enterprise-badge">🔒 [LOCAL_PORTAL_ONLY] Enterprise Core System</div>`
+          : proj.link
+          ? `<a href="${proj.link}" target="_blank" rel="noopener" class="btn-terminal">&gt; inspect_source_code</a>`
+          : "";
+
+      card.innerHTML = `
+        <div class="mobile-card-head">
+          <span class="node-glyph">${glyph}</span>
+          <div class="details-category">${proj.category}</div>
+        </div>
+        <h3 class="details-title font-display">${proj.title}</h3>
+        <div class="details-tech-row">${techPills}</div>
+        <p class="details-desc">${proj.description}</p>
+        <ul class="details-highlights">${bullets}</ul>
+        <div class="details-actions">${action}</div>
+      `;
+
+      mobileList.appendChild(card);
+    });
+  }
+
   // Draw connecting lines in SVG
   let svgLines = [];
 

@@ -457,3 +457,54 @@
   justify-content: center;
   margin-top: 50px;
 }
+
+/* MOBILE PROJECT LIST (shown only on small screens; see responsive.css) */
+.projects-mobile-list {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobile-project-card {
+  background: var(--bg-card);
+  border: var(--border-card);
+  border-left: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 24px 22px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mobile-project-card.cat-enterprise {
+  border-left-color: var(--accent-amber);
+}
+.mobile-project-card.cat-ai {
+  border-left-color: var(--accent-cyan);
+}
+.mobile-project-card.cat-ml {
+  border-left-color: var(--accent-violet);
+}
+
+.mobile-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-card-head .node-glyph {
+  font-size: 1.1rem;
+}
+
+.mobile-project-card .details-title {
+  font-size: 1.25rem;
+}
+
+.mobile-project-card .details-highlights {
+  margin: 0;
+}
+
+.mobile-project-card .details-actions {
+  margin-top: 4px;
+}
