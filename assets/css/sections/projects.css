@@ -55,14 +55,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* Center the node on its (x, y) coordinate so SVG lines meet its middle */
+  transform: translate(-50%, -50%);
   transition: transform var(--transition-bounce), border-color var(--transition-normal), box-shadow var(--transition-normal);
   z-index: 3;
   cursor: pointer;
 }
 
-.project-node:hover {
-  transform: scale(1.15) translate(-5%, -5%);
+.project-node:hover,
+.project-node:focus-visible {
+  transform: translate(-50%, -50%) scale(1.15);
   z-index: 10;
+}
+
+.project-node:focus-visible {
+  outline: 1px solid var(--accent-cyan);
+  outline-offset: 4px;
 }
 
 .project-node.active {
@@ -133,7 +141,8 @@
 }
 
 .project-node:hover .node-label,
-.project-node.active .node-label {
+.project-node.active .node-label,
+.project-node.linked .node-label {
   opacity: 1;
   color: var(--text-primary);
 }
@@ -202,6 +211,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  max-height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .details-panel-content.hidden {
@@ -267,6 +279,61 @@
   left: 0;
   top: 0;
   color: var(--accent-cyan);
+}
+
+/* Linked nodes row — projects connected on the map + the stack they share */
+.details-linked {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.05);
+  padding-top: 15px;
+}
+
+.details-linked-label {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.details-linked-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.linked-node-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 6px 10px;
+  background: rgba(0, 240, 255, 0.04);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition-normal), background var(--transition-normal);
+}
+
+.linked-node-chip:hover,
+.linked-node-chip:focus-visible {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: var(--accent-cyan);
+}
+
+.chip-name {
+  font-size: 0.65rem;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+}
+
+.chip-shared {
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
 }
 
 .details-actions {

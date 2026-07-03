@@ -34,6 +34,23 @@ button {
   cursor: pointer;
 }
 
+/* Restore a visible focus indicator for keyboard navigation
+   (the reset above removes the default outline) */
+:focus-visible {
+  outline: 1px solid var(--accent-cyan);
+  outline-offset: 3px;
+}
+
+/* Tone down animation for users who ask the OS for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 a {
   text-decoration: none;
   color: inherit;

@@ -95,6 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("keydown", (e) => {
     if (bootScreen.style.display !== "none") {
+      // Consume the key so later listeners (nav's 1-6 section shortcuts,
+      // registered after this one) don't also act on the same keypress
+      e.stopImmediatePropagation();
       finishBoot();
     }
   });

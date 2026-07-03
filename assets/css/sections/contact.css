@@ -194,7 +194,7 @@ textarea.form-input {
 
 .contact-node-link:hover .node-link-value {
   color: var(--accent-cyan);
-  text-shadow: var(--shadow-neon-cyan) / 2;
+  text-shadow: var(--shadow-neon-cyan);
 }
 
 a.contact-node-link {

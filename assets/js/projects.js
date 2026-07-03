@@ -22,20 +22,79 @@ document.addEventListener("DOMContentLoaded", () => {
     rag: { x: 50, y: 48, glyph: "📂", cat: "ai" },
     conversational: { x: 74, y: 28, glyph: "💬", cat: "ai" },
     guvi: { x: 82, y: 58, glyph: "🎓", cat: "ai" },
-    singapore: { x: 48, y: 80, glyph: "🇸🇬", cat: "ml" },
-    copper: { x: 76, y: 78, glyph: "⚡", cat: "ml" }
+    singapore: { x: 44, y: 80, glyph: "🇸🇬", cat: "ml" },
+    copper: { x: 78, y: 72, glyph: "⚡", cat: "ml" }
   };
 
-  // Connections (edges) between project nodes
-  const nodeConnections = [
-    { from: "o2c", to: "analyst" },
-    { from: "analyst", to: "rag" },
-    { from: "rag", to: "voice" },
-    { from: "rag", to: "conversational" },
-    { from: "conversational", to: "guvi" },
-    { from: "rag", to: "singapore" },
-    { from: "singapore", to: "copper" }
-  ];
+  // Connections (edges) are derived from the projects' tech stacks:
+  // two nodes link when they share at least TECH_LINK_THRESHOLD technologies.
+  const TECH_LINK_THRESHOLD = 2;
+
+  function normalizeTech(tech) {
+    const t = tech.toLowerCase();
+    if (t.includes("openai")) return "openai";
+    if (t.includes("react")) return "react";
+    if (t.includes("llm")) return "llm";
+    return t;
+  }
+
+  // Map of project id -> Map(normalized tech -> display name)
+  const techIndex = {};
+  projectsData.forEach(p => {
+    const m = new Map();
+    p.tech.forEach(t => {
+      const key = normalizeTech(t);
+      if (!m.has(key)) m.set(key, t);
+    });
+    techIndex[p.id] = m;
+  });
+
+  function sharedTech(aId, bId) {
+    const shared = [];
+    techIndex[aId].forEach((display, key) => {
+      if (techIndex[bId].has(key)) shared.push(display);
+    });
+    return shared;
+  }
+
+  const mappedIds = projectsData.map(p => p.id).filter(id => nodePositions[id]);
+  const nodeConnections = [];
+
+  mappedIds.forEach((a, i) => {
+    mappedIds.slice(i + 1).forEach(b => {
+      const shared = sharedTech(a, b);
+      if (shared.length >= TECH_LINK_THRESHOLD) {
+        nodeConnections.push({ from: a, to: b, shared });
+      }
+    });
+  });
+
+  // A node sharing too little with everything would float unconnected;
+  // link it to its strongest match (preferring same category) so the map stays whole.
+  mappedIds.forEach(id => {
+    if (nodeConnections.some(c => c.from === id || c.to === id)) return;
+    let best = null;
+    mappedIds.forEach(other => {
+      if (other === id) return;
+      const shared = sharedTech(id, other);
+      if (!shared.length) return;
+      const sameCat = nodePositions[id].cat === nodePositions[other].cat ? 1 : 0;
+      if (!best || shared.length > best.shared.length ||
+          (shared.length === best.shared.length && sameCat > best.sameCat)) {
+        best = { to: other, shared, sameCat };
+      }
+    });
+    if (best) nodeConnections.push({ from: id, to: best.to, shared: best.shared });
+  });
+
+  function linkedProjects(projId) {
+    return nodeConnections
+      .filter(c => c.from === projId || c.to === projId)
+      .map(c => ({ id: c.from === projId ? c.to : c.from, shared: c.shared }))
+      .sort((a, b) => b.shared.length - a.shared.length);
+  }
+
+  let selectedProjectId = null;
 
   // Render Nodes
   projectsData.forEach(proj => {
@@ -48,6 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
     node.style.left = `${pos.x}%`;
     node.style.top = `${pos.y}%`;
     node.setAttribute("data-id", proj.id);
+    node.setAttribute("role", "button");
+    node.setAttribute("tabindex", "0");
+    node.setAttribute("aria-label", `Decode project: ${proj.title}`);
 
     node.innerHTML = `
       <span class="node-glyph">${pos.glyph}</span>
@@ -61,13 +123,29 @@ document.addEventListener("DOMContentLoaded", () => {
       selectProject(proj.id);
     });
 
-    // Hover triggers highlighting connections
+    // Keyboard activation mirrors click
+    node.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        selectProject(proj.id);
+      }
+    });
+
+    // Hover/focus previews connections; leaving falls back to the selected node
     node.addEventListener("mouseenter", () => {
       highlightConnections(proj.id);
     });
 
     node.addEventListener("mouseleave", () => {
-      resetConnections();
+      restoreSelectionHighlight();
+    });
+
+    node.addEventListener("focus", () => {
+      highlightConnections(proj.id);
+    });
+
+    node.addEventListener("blur", () => {
+      restoreSelectionHighlight();
     });
   });
 
@@ -145,10 +223,17 @@ document.addEventListener("DOMContentLoaded", () => {
       svgCanvas.appendChild(line);
       svgLines.push(line);
     });
+
+    // Keep the selected node's connections lit across redraws (e.g. resize)
+    restoreSelectionHighlight();
   }
 
-  // Redraw SVG on resize
+  // Redraw SVG on resize — the container also changes height when the details
+  // panel grows, so observe the map itself, not just the window
   window.addEventListener("resize", drawConnections);
+  if (window.ResizeObserver) {
+    new ResizeObserver(drawConnections).observe(svgCanvas.parentElement);
+  }
   
   // Set initial timeout so elements render fully in viewport
   setTimeout(drawConnections, 600);
@@ -158,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(drawConnections, 300);
   });
 
-  // Hover Highlight Logic
+  // Hover / Selection Highlight Logic
   function highlightConnections(projId) {
     svgLines.forEach(line => {
       const from = line.getAttribute("data-from");
@@ -170,12 +255,29 @@ document.addEventListener("DOMContentLoaded", () => {
         line.setAttribute("class", "conn-line dimmed");
       }
     });
+
+    // Surface the labels of directly linked nodes
+    const neighborIds = new Set(linkedProjects(projId).map(l => l.id));
+    document.querySelectorAll(".project-node").forEach(node => {
+      node.classList.toggle("linked", neighborIds.has(node.getAttribute("data-id")));
+    });
   }
 
   function resetConnections() {
     svgLines.forEach(line => {
       line.setAttribute("class", "conn-line");
     });
+    document.querySelectorAll(".project-node").forEach(node => {
+      node.classList.remove("linked");
+    });
+  }
+
+  function restoreSelectionHighlight() {
+    if (selectedProjectId) {
+      highlightConnections(selectedProjectId);
+    } else {
+      resetConnections();
+    }
   }
 
   // Project Selection / Details Card population
@@ -191,6 +293,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const proj = projectsData.find(p => p.id === projId);
     if (!proj) return;
+
+    // Keep this node's connections lit until another node is chosen
+    selectedProjectId = projId;
+    highlightConnections(projId);
 
     // Show panel content & hide placeholder
     detailsPlaceholder.classList.add("hidden");
@@ -226,6 +332,39 @@ document.addEventListener("DOMContentLoaded", () => {
       bulletEl.appendChild(li);
     });
 
+    // Linked nodes — which projects this one connects to, and the stack they share
+    const linkedWrap = detailsContent.querySelector(".details-linked");
+    const linkedList = detailsContent.querySelector(".details-linked-list");
+    if (linkedWrap && linkedList) {
+      linkedList.innerHTML = "";
+      const links = linkedProjects(projId);
+      linkedWrap.classList.toggle("hidden", links.length === 0);
+
+      links.forEach(link => {
+        const other = projectsData.find(p => p.id === link.id);
+        if (!other) return;
+        const pos = nodePositions[link.id];
+
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "linked-node-chip";
+        chip.setAttribute("aria-label", `Jump to linked project: ${other.title}`);
+
+        const name = document.createElement("span");
+        name.className = "chip-name";
+        name.innerText = `${pos ? pos.glyph + " " : ""}${other.title}`;
+
+        const shared = document.createElement("span");
+        shared.className = "chip-shared";
+        shared.innerText = link.shared.join(" · ");
+
+        chip.appendChild(name);
+        chip.appendChild(shared);
+        chip.addEventListener("click", () => selectProject(link.id));
+        linkedList.appendChild(chip);
+      });
+    }
+
     // Action buttons depending on enterprise/github
     actionsEl.innerHTML = "";
     if (proj.type === "internal") {
@@ -259,6 +398,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   drawerOverlay.addEventListener("click", (e) => {
     if (e.target === drawerOverlay) {
+      drawerOverlay.classList.remove("active");
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && drawerOverlay.classList.contains("active")) {
       drawerOverlay.classList.remove("active");
     }
   });

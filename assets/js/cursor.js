@@ -46,29 +46,20 @@ document.addEventListener("DOMContentLoaded", () => {
   
   lerpRing();
 
-  // Expansion triggers on buttons, links, interactive objects
+  // Expansion triggers on buttons, links, interactive objects.
+  // Delegated listeners cover dynamically added nodes (GitHub repos, linked chips)
+  // without rescanning the whole DOM on every mutation.
   const interactiveSelectors = 'a, button, .project-node, .hub-trigger, .contact-node-link';
-  
-  function addHoverListeners() {
-    const targets = document.querySelectorAll(interactiveSelectors);
-    targets.forEach(target => {
-      // Avoid duplicate listeners
-      if (target.getAttribute("data-cursor-bound") === "true") return;
-      target.setAttribute("data-cursor-bound", "true");
 
-      target.addEventListener("mouseenter", () => {
-        cursor.classList.add("hovering");
-      });
-      target.addEventListener("mouseleave", () => {
-        cursor.classList.remove("hovering");
-      });
-    });
-  }
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.closest(interactiveSelectors)) {
+      cursor.classList.add("hovering");
+    }
+  });
 
-  // Run on start
-  addHoverListeners();
-
-  // Watch DOM for dynamically loaded nodes (like GitHub repos) to bind hover listeners
-  const observer = new MutationObserver(addHoverListeners);
-  observer.observe(document.body, { childList: true, subtree: true });
+  document.addEventListener("mouseout", (e) => {
+    if (e.target.closest(interactiveSelectors)) {
+      cursor.classList.remove("hovering");
+    }
+  });
 });

@@ -22,7 +22,7 @@
   /* Typography Colors */
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
-  --text-muted: #475569;
+  --text-muted: #64748b; /* keep readable on --bg-deep; #475569 fell below 3:1 contrast */
   --text-dark: #0f172a;
 
   /* Typography Scales */
