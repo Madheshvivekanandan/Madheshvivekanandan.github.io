@@ -41,7 +41,7 @@
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--text-secondary);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), var(--shadow-neon-cyan) / 2;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 8px rgba(var(--accent-cyan-rgb), 0.15);
   position: relative;
   overflow: hidden;
 }
@@ -191,4 +191,9 @@
   77% { clip: rect(144px, 9999px, 22px, 0); }
   88% { clip: rect(67px, 9999px, 119px, 0); }
   100% { clip: rect(5px, 9999px, 96px, 0); }
+}
+
+/* Lock page scroll while the boot overlay is up */
+body.booting {
+  overflow: hidden;
 }

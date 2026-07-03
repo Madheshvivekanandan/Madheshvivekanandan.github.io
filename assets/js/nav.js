@@ -117,6 +117,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Ignore while the boot overlay is up — any key there skips the boot instead
+    if (document.body.classList.contains("booting")) {
+      return;
+    }
+
     const key = e.key;
     if (["1", "2", "3", "4", "5", "6"].includes(key)) {
       e.preventDefault();

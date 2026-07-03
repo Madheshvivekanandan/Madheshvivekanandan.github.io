@@ -84,7 +84,7 @@
 }
 .pipeline-node-card.accent-cyan:hover {
   border-color: var(--accent-cyan);
-  box-shadow: var(--shadow-neon-cyan) / 3, var(--shadow-card);
+  box-shadow: var(--shadow-neon-cyan), var(--shadow-card);
 }
 
 .pipeline-node-card.accent-violet {
@@ -92,7 +92,7 @@
 }
 .pipeline-node-card.accent-violet:hover {
   border-color: var(--accent-violet);
-  box-shadow: var(--shadow-neon-violet) / 3, var(--shadow-card);
+  box-shadow: var(--shadow-neon-violet), var(--shadow-card);
 }
 
 .pipeline-node-card.accent-amber {
@@ -100,7 +100,7 @@
 }
 .pipeline-node-card.accent-amber:hover {
   border-color: var(--accent-amber);
-  box-shadow: var(--shadow-neon-amber) / 3, var(--shadow-card);
+  box-shadow: var(--shadow-neon-amber), var(--shadow-card);
 }
 
 /* Left/Right Alternate Spacing */

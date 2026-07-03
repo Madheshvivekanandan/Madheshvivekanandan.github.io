@@ -30,6 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
     await delay(900);
     showStatus("⚡ PACKETIZING PAYLOAD PROTOCOLS...", "info");
 
+    // Distinguishes "network never reached the relay" from "relay answered but
+    // rejected the payload" (e.g. rotated/disabled access key) for accurate status copy.
+    let relayRejected = false;
+
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -43,9 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
           message,
         }),
       });
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
 
       if (!res.ok || !data.success) {
+        relayRejected = true;
         throw new Error(data.message || "Transmission rejected by relay node.");
       }
 
@@ -54,8 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
       btnLabel.innerText = "> TRANSMISSION_LAUNCHED";
       form.reset();
     } catch (err) {
-      // Relay unreachable — degrade gracefully to the visitor's mail client.
-      showStatus("⚠️ RELAY UNREACHABLE — REROUTING VIA LOCAL MAIL CLIENT...", "error");
+      // Either way the visitor's mail client still delivers the message.
+      showStatus(
+        relayRejected
+          ? "⚠️ RELAY REJECTED PAYLOAD — REROUTING VIA LOCAL MAIL CLIENT..."
+          : "⚠️ RELAY UNREACHABLE — REROUTING VIA LOCAL MAIL CLIENT...",
+        "error"
+      );
       const subject = encodeURIComponent(`Outbound Port Signal from ${name}`);
       const body = encodeURIComponent(`Sender: ${name} (${email})\n\nTransmission Payload:\n${message}`);
       window.location.href = `mailto:${OWNER_EMAIL}?subject=${subject}&body=${body}`;

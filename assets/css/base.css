@@ -211,3 +211,9 @@ h1, h2, h3, h4 {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Generic visibility utility — JS toggles `.hidden` across sections
+   (details panel placeholder, drawer loading state, linked-nodes row) */
+.hidden {
+  display: none !important;
+}
