@@ -14,7 +14,16 @@ window.PORTFOLIO_DATA = {
     email: "madheshvivekanandan@gmail.com",
     phone: "6374051514",
     github: "Madheshvivekanandan",
-    linkedin: "madhesh-vivekanandan"
+    linkedin: "madhesh-vivekanandan",
+    blog: {
+      platform: "DEV.to",
+      url: "https://dev.to/madmi",
+      handle: "dev.to/madmi",
+      latest: {
+        title: "The Dashboard That Builds Itself",
+        url: "https://dev.to/madmi/the-dashboard-that-builds-itself-3386"
+      }
+    }
   },
   
   experience: [
