@@ -10,11 +10,13 @@
   grid-template-columns: 1.2fr 1fr;
   gap: 60px;
   width: 100%;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 /* TRANSMISSION FORM TERMINAL (LEFT PANEL) */
 .contact-terminal-card {
+  display: flex;
+  flex-direction: column;
   background: var(--bg-card);
   border: var(--border-card);
   border-radius: var(--radius-md);
@@ -37,10 +39,23 @@
 }
 
 .contact-form {
+  flex: 1;
   padding: 35px;
   display: flex;
   flex-direction: column;
   gap: 30px;
+}
+
+/* Payload field soaks up any height the node column adds, so the two
+   columns end on the same line and the submit button stays anchored */
+.form-group-grow {
+  flex: 1;
+  display: flex;
+  min-height: 140px;
+}
+
+.form-group-grow textarea.form-input {
+  flex: 1;
 }
 
 /* Outbound Inputs */
