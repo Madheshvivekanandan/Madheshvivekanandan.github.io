@@ -20,6 +20,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 3. Start live server mock latency counter in footer
     startLatencyCounter();
+
+    // 4. Sync outbound blog portals with the dataset
+    syncBlogPortals();
+  }
+
+  // Point every [data-blog-link] portal at the blog declared in portfolio-data.js
+  function syncBlogPortals() {
+    const blog = window.PORTFOLIO_DATA.profile.blog;
+    if (!blog || !blog.url) return;
+
+    document.querySelectorAll("[data-blog-link]").forEach(link => {
+      link.href = blog.url;
+      if (blog.latest && blog.latest.title) {
+        link.title = `LATEST_TRANSMISSION: ${blog.latest.title}`;
+      }
+    });
+
+    document.querySelectorAll("[data-blog-handle]").forEach(el => {
+      el.innerText = blog.handle || blog.url;
+    });
   }
 
   // Populate dynamic experience cards from portfolio-data.js

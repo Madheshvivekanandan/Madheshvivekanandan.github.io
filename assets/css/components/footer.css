@@ -23,6 +23,8 @@
 .footer-left, .footer-right {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 15px;
 }
 
@@ -33,4 +35,15 @@
 .green-text {
   color: var(--accent-emerald);
   text-shadow: 0 0 8px rgba(16, 185, 129, 0.2);
+}
+
+.footer-blog-link {
+  color: var(--accent-violet);
+  letter-spacing: 1.5px;
+  transition: var(--transition-normal);
+}
+
+.footer-blog-link:hover {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
 }
