@@ -26,7 +26,7 @@ Everything is wired up in [index.html](index.html), which loads modular assets i
   - `main.js` — orchestrator; populates experience timeline + ticker + footer latency once
     the system is ready.
   - `neural-bg.js` / `cursor.js` / `nav.js` / `scroll-engine.js` — background canvas,
-    custom cursor, section nav (top bar / mobile tab bar), scroll reveals.
+    custom cursor, radial hub nav (labelled orbit / mobile tab bar), scroll reveals.
   - `projects.js` — renders project nodes and fetches live repos from the GitHub API
     (`api.github.com/users/<username>/repos`).
   - `skills.js` — skills constellation.
@@ -35,7 +35,7 @@ Everything is wired up in [index.html](index.html), which loads modular assets i
 ## Sections (in `index.html`)
 
 `hero` → `about` → `experience` → `projects` → `skills` → `contact` → footer.
-The section nav (and the 1–6 keyboard shortcuts) maps to these anchors.
+The radial hub nav (and the 1–6 keyboard shortcuts) maps to these anchors.
 
 ## Conventions
 

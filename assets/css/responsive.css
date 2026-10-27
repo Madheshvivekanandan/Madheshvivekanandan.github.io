@@ -36,19 +36,6 @@
     grid-template-columns: 1fr;
     gap: 50px;
   }
-
-  /* Narrower top bar: drop the shortcut numbers so six labels fit beside the brand */
-  .site-nav {
-    padding: 0 6%;
-  }
-
-  .nav-item {
-    padding: 8px;
-  }
-
-  .nav-num {
-    display: none;
-  }
 }
 
 /* ==========================================================================
@@ -60,7 +47,8 @@
   }
 
   .section-title-mono {
-    font-size: 1.4rem;
+    font-size: 1.2rem; /* fits skills_constellation.orbit on one line at 375px */
+    overflow-wrap: anywhere; /* narrower phones wrap instead of clipping */
   }
 
   /* 1. Hero Layout Stacked — compact so the CTAs land on the first screen */
@@ -141,52 +129,82 @@
     display: flex; /* Reveal the tappable project list */
   }
 
-  /* 4. Top nav bar moves to a fixed bottom tab bar */
-  .site-nav {
-    top: auto;
+  /* 4. Radial hub morphs into a fixed bottom tab bar, labels under the numbers */
+  .neural-hub {
     bottom: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 60px;
     padding: 0 4px;
-    border-bottom: none;
-    border-top: 1px solid rgba(0, 240, 255, 0.15);
     background: rgba(10, 14, 26, 0.95);
+    border-top: 1px solid rgba(0, 240, 255, 0.15);
+    backdrop-filter: blur(10px);
   }
 
-  .nav-brand {
-    display: none;
+  .hub-trigger {
+    display: none; /* the bar is always open */
   }
 
-  .nav-links {
+  .hub-menu {
+    position: static;
     width: 100%;
     height: 100%;
-    justify-content: space-around;
-    gap: 0;
+    display: flex;
+    pointer-events: auto;
   }
 
-  .nav-item {
+  .hub-item,
+  .neural-hub.active .hub-item {
+    position: relative;
+    right: auto;
+    bottom: auto;
     flex: 1;
+    width: auto;
     height: 100%;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 2px;
-    padding: 0;
+    border: none;
     border-radius: 0;
-    font-size: 0.75rem;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    color: var(--text-muted);
   }
 
-  .nav-item:hover {
+  .hub-label {
+    position: static;
+    transform: none;
+    padding: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+    font-size: 0.75rem;
+    letter-spacing: 0;
+    color: inherit;
+  }
+
+  .hub-item:hover,
+  .hub-item:focus-visible {
+    box-shadow: none;
+  }
+
+  .hub-item.active {
     background: transparent;
   }
 
-  .nav-item .nav-num {
-    display: inline;
-  }
-
-  .nav-item.active::after {
+  .hub-item.active::after {
+    content: '';
+    position: absolute;
     top: 0;
-    bottom: auto;
     left: 30%;
     right: 30%;
+    height: 2px;
+    background-color: var(--accent-cyan);
+    box-shadow: var(--shadow-neon-cyan);
+    border-radius: var(--radius-full);
   }
 
   .footer-container {
