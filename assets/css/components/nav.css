@@ -155,7 +155,7 @@
   position: absolute;
   right: 80px;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
   background: rgba(10, 14, 26, 0.9);
   border: 1px solid rgba(0, 240, 255, 0.15);

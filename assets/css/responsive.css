@@ -83,7 +83,7 @@
 
   .photo-hex-frame::after {
     bottom: -18px;
-    font-size: 0.6rem;
+    font-size: 0.75rem;
   }
 
   /* 2. Experience Timeline Stacked */

@@ -127,19 +127,19 @@
   position: absolute;
   top: 60px;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
   background: rgba(5, 7, 15, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 4px 8px;
   border-radius: var(--radius-sm);
   /* Wrap long titles so neighbouring labels and map edges don't clip them */
   width: max-content;
-  max-width: 140px;
+  max-width: 150px;
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  line-height: 1.35;
   pointer-events: none;
-  opacity: 0.8;
   transition: opacity var(--transition-normal), color var(--transition-normal);
 }
 
@@ -224,7 +224,7 @@
 }
 
 .details-category {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--accent-amber);
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -246,7 +246,7 @@
 }
 
 .tech-pill {
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   padding: 4px 10px;
   border-radius: var(--radius-full);
   background: rgba(255, 255, 255, 0.04);
@@ -294,7 +294,7 @@
 }
 
 .details-linked-label {
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -328,13 +328,13 @@
 }
 
 .chip-name {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--text-primary);
   letter-spacing: 1px;
 }
 
 .chip-shared {
-  font-size: 0.55rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   letter-spacing: 0.5px;
 }
@@ -349,7 +349,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--accent-amber);
   background: rgba(255, 174, 66, 0.08);
   border: 1px solid var(--accent-amber);
@@ -505,7 +505,7 @@
 .repo-meta {
   display: flex;
   gap: 20px;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 

@@ -138,7 +138,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--accent-cyan);
   letter-spacing: 3px;
   opacity: 0.6;
@@ -198,7 +198,7 @@
 }
 
 .stat-label {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   letter-spacing: 1px;
 }
@@ -231,7 +231,7 @@
   align-items: center;
   gap: 8px;
   color: var(--text-muted);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   letter-spacing: 2px;
   transition: var(--transition-normal);
 }
