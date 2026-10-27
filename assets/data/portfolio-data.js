@@ -67,41 +67,11 @@ window.PORTFOLIO_DATA = {
   ],
 
   skills: {
-    ai: [
-      { name: "RAG Systems", level: "Expert" },
-      { name: "Agentic Workflows", level: "Expert" },
-      { name: "n8n Automation", level: "Expert" },
-      { name: "LLM APIs (OpenAI, Claude)", level: "Expert" },
-      { name: "Azure OpenAI", level: "Intermediate" },
-      { name: "Hugging Face", level: "Intermediate" },
-      { name: "Ollama (Local LLMs)", level: "Advanced" }
-    ],
-    backend: [
-      { name: "Python", level: "Expert" },
-      { name: "FastAPI", level: "Expert" },
-      { name: "REST APIs", level: "Expert" },
-      { name: "GraphQL", level: "Intermediate" },
-      { name: "SQLAlchemy ORM", level: "Advanced" },
-      { name: "Shell Scripting", level: "Advanced" }
-    ],
-    frontend: [
-      { name: "React.js", level: "Advanced" },
-      { name: "React Native", level: "Intermediate" },
-      { name: "JavaScript (ES6+)", level: "Expert" },
-      { name: "HTML5 / CSS3", level: "Expert" }
-    ],
-    devops: [
-      { name: "Docker", level: "Advanced" },
-      { name: "Git / GitHub", level: "Expert" },
-      { name: "Linux Administration", level: "Advanced" },
-      { name: "Postman API Testing", level: "Expert" }
-    ],
-    databases: [
-      { name: "PostgreSQL", level: "Advanced" },
-      { name: "Qdrant Vector DB", level: "Advanced" },
-      { name: "MySQL", level: "Advanced" },
-      { name: "Adabas", level: "Beginner" }
-    ]
+    ai: ["RAG", "Agentic Workflows", "LangGraph", "LLM APIs (OpenAI, Azure OpenAI)", "Hugging Face", "Ollama", "Docling"],
+    backend: ["Python", "FastAPI", "REST APIs", "GraphQL", "SQLAlchemy"],
+    frontend: ["React.js", "React Native", "JavaScript", "HTML / CSS"],
+    devops: ["Docker", "Git / GitHub", "n8n", "Linux", "Shell Scripting", "Postman"],
+    databases: ["PostgreSQL", "MySQL", "Qdrant", "Adabas"]
   },
 
   projects: [
