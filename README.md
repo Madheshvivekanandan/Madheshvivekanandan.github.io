@@ -11,8 +11,8 @@ just HTML, CSS, and vanilla JS served directly by [index.html](index.html) and h
 
 - **Terminal boot sequence** that hands off to the main experience via a
   `neural-system-ready` event.
-- **Neural background canvas**, custom cursor, and a labelled **section nav** (top bar on
-  desktop, tab bar on phones, `1`–`6` keyboard shortcuts).
+- **Neural background canvas**, custom cursor, and a **radial hub nav**: a floating orb
+  that sweeps out a labelled orbit of sections (tab bar on phones, `1`–`6` shortcuts).
 - **Live GitHub projects** fetched from the GitHub API alongside curated project nodes.
 - **Contact form** (`signal_transmission.io`) delivered through
   [Web3Forms](https://web3forms.com) with a `mailto:` fallback.
@@ -21,7 +21,7 @@ just HTML, CSS, and vanilla JS served directly by [index.html](index.html) and h
 ## Sections
 
 `hero` → `about` → `experience` → `projects` → `skills` → `contact` → footer.
-The section nav maps to these anchors.
+The radial hub nav maps to these anchors.
 
 ## Architecture
 
@@ -41,7 +41,7 @@ assets/
 │   ├── main.js               # orchestrator; timeline + ticker + footer latency
 │   ├── neural-bg.js          # background canvas
 │   ├── cursor.js             # custom cursor
-│   ├── nav.js                # section nav + 1–6 shortcuts
+│   ├── nav.js                # radial hub nav + 1–6 shortcuts
 │   ├── scroll-engine.js      # scroll reveals
 │   ├── projects.js           # project nodes + live GitHub repos
 │   ├── skills.js             # skills constellation

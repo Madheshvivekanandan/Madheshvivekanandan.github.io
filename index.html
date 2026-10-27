@@ -53,16 +53,24 @@
     </div>
   </div>
 
-  <!-- Section Navigation: top bar on desktop, bottom tab bar on phones -->
-  <nav class="site-nav" id="site-nav" aria-label="Sections">
-    <a href="#hero" class="nav-brand font-mono">&gt; madhesh_v</a>
-    <div class="nav-links">
-      <a href="#hero" class="nav-item active" aria-current="location" data-index="1"><span class="nav-num">01</span><span class="nav-label">Home</span></a>
-      <a href="#about" class="nav-item" data-index="2"><span class="nav-num">02</span><span class="nav-label">About</span></a>
-      <a href="#experience" class="nav-item" data-index="3"><span class="nav-num">03</span><span class="nav-label">Work</span></a>
-      <a href="#projects" class="nav-item" data-index="4"><span class="nav-num">04</span><span class="nav-label">Projects</span></a>
-      <a href="#skills" class="nav-item" data-index="5"><span class="nav-num">05</span><span class="nav-label">Skills</span></a>
-      <a href="#contact" class="nav-item" data-index="6"><span class="nav-num">06</span><span class="nav-label">Contact</span></a>
+  <!-- Radial Neural Hub: floating orb with a labelled orbit on desktop, tab bar on phones -->
+  <nav class="neural-hub" id="neural-hub" aria-label="Sections">
+    <button type="button" class="hub-trigger" id="hub-trigger" aria-expanded="false" aria-controls="hub-menu" aria-label="Section menu">
+      <span class="hub-current font-mono" aria-hidden="true"><span class="hub-current-num" id="hub-current-num">01</span> // <span id="hub-current-label">Home</span></span>
+      <span class="hub-icon-wrap">
+        <span class="hub-dot"></span>
+        <svg class="hub-ring-svg" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="45" stroke="var(--accent-cyan)" stroke-width="2" fill="none" />
+        </svg>
+      </span>
+    </button>
+    <div class="hub-menu" id="hub-menu">
+      <a href="#hero" class="hub-item active" aria-current="location" data-index="1"><span class="hub-num">01</span><span class="hub-label">Home</span></a>
+      <a href="#about" class="hub-item" data-index="2"><span class="hub-num">02</span><span class="hub-label">About</span></a>
+      <a href="#experience" class="hub-item" data-index="3"><span class="hub-num">03</span><span class="hub-label">Work</span></a>
+      <a href="#projects" class="hub-item" data-index="4"><span class="hub-num">04</span><span class="hub-label">Projects</span></a>
+      <a href="#skills" class="hub-item" data-index="5"><span class="hub-num">05</span><span class="hub-label">Skills</span></a>
+      <a href="#contact" class="hub-item" data-index="6"><span class="hub-num">06</span><span class="hub-label">Contact</span></a>
     </div>
   </nav>
 
