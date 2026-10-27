@@ -216,12 +216,9 @@
   margin-top: 10px;
 }
 
-/* Scroll descent arrow */
+/* Scroll descent arrow — in normal flow below the hero so it can't land on the CTA row */
 .hero-scroll-indicator {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  align-self: center;
   z-index: 15;
 }
 

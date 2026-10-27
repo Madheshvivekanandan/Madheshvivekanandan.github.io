@@ -88,10 +88,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!tickerText) return;
 
     const phrases = window.PORTFOLIO_DATA.profile.taglines;
+    // Start on the first phrase fully written (it's already in the markup),
+    // so a first glance never lands on half a sentence
     let phraseIdx = 0;
-    let charIdx = 0;
-    let isDeleting = false;
+    let charIdx = phrases[0].length;
+    let isDeleting = true;
     let typingSpeed = 80;
+    tickerText.innerText = phrases[0];
 
     function tick() {
       const currentPhrase = phrases[phraseIdx];
@@ -118,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(tick, typingSpeed);
     }
 
-    setTimeout(tick, 1000);
+    setTimeout(tick, 2200);
   }
 
   // Mock server latency counter in footer

@@ -63,15 +63,28 @@
     font-size: 1.4rem;
   }
 
-  /* 1. Hero Layout Stacked */
+  /* 1. Hero Layout Stacked — compact so the CTAs land on the first screen */
+  .hero-section {
+    padding: 40px 5% 90px; /* nav sits at the bottom on phones */
+  }
+
+  .hero-container {
+    gap: 24px;
+  }
+
+  .hero-header-meta {
+    letter-spacing: 1px;
+  }
+
   .hero-layout {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 30px;
+    gap: 24px;
   }
 
   .hero-content {
     align-items: center;
+    gap: 16px;
   }
 
   .hero-title {
@@ -82,16 +95,22 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    order: 2; /* after the CTAs */
   }
 
   .hero-ctas {
     justify-content: center;
     width: 100%;
+    order: 1;
+  }
+
+  .hero-scroll-indicator {
+    display: none;
   }
 
   .photo-hex-frame {
-    width: 220px;
-    height: 250px;
+    width: 160px;
+    height: 183px;
   }
 
   .photo-hex-frame::after {
