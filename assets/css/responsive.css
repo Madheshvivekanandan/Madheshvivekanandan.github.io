@@ -118,20 +118,10 @@
     font-size: 0.75rem;
   }
 
-  /* 2. Experience Timeline Stacked */
-  .pipeline-flow-line {
-    left: 20px;
-  }
-
-  .pipeline-node-card {
-    width: calc(100% - 40px);
-    align-self: flex-end !important;
-  }
-
-  .pipeline-joint {
-    left: -20px !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
+  /* 2. Experience Timeline: tighter left rail */
+  .pipeline-wrapper {
+    --timeline-line-x: 12px;
+    --timeline-gutter: 32px;
   }
 
   /* 3. Projects Mobile Overrides: interactive map + click-to-decode panel
