@@ -51,7 +51,7 @@
 
 .card-title {
   margin-left: 10px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -105,7 +105,7 @@
   width: 100%;
   background: linear-gradient(to top, rgba(5, 7, 15, 0.9) 30%, transparent);
   padding: 15px 25px;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--accent-cyan);
   letter-spacing: 3px;
   text-transform: uppercase;

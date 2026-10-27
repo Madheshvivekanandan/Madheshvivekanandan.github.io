@@ -138,7 +138,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--accent-cyan);
   letter-spacing: 3px;
   opacity: 0.6;
@@ -198,7 +198,7 @@
 }
 
 .stat-label {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   letter-spacing: 1px;
 }
@@ -216,12 +216,9 @@
   margin-top: 10px;
 }
 
-/* Scroll descent arrow */
+/* Scroll descent arrow — in normal flow below the hero so it can't land on the CTA row */
 .hero-scroll-indicator {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  align-self: center;
   z-index: 15;
 }
 
@@ -231,7 +228,7 @@
   align-items: center;
   gap: 8px;
   color: var(--text-muted);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   letter-spacing: 2px;
   transition: var(--transition-normal);
 }

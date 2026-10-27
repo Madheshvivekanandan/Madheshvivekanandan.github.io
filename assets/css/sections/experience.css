@@ -5,19 +5,23 @@
   background-color: rgba(5, 8, 16, 0.2);
 }
 
+/* Single-column timeline: the pipe runs down the left rail and every card
+   takes the full width beside it, instead of alternating half-width cards */
 .pipeline-wrapper {
+  --timeline-line-x: 20px;   /* pipe centre, from the wrapper's left edge */
+  --timeline-gutter: 56px;   /* space reserved left of every card */
   position: relative;
   width: 100%;
-  max-width: 900px;
-  margin: 50px auto 0;
+  max-width: 960px;
+  margin: 40px 0 0;
   padding: 20px 0;
 }
 
-/* Vertical central flow pipe */
+/* Vertical flow pipe on the left rail */
 .pipeline-flow-line {
   position: absolute;
   top: 0;
-  left: 50%;
+  left: var(--timeline-line-x);
   transform: translateX(-50%);
   width: 4px;
   height: 100%;
@@ -59,12 +63,13 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  align-items: flex-end;
+  gap: 32px;
 }
 
 .pipeline-node-card {
   position: relative;
-  width: 45%;
+  width: calc(100% - var(--timeline-gutter));
   background: var(--bg-card);
   border: var(--border-card);
   border-radius: var(--radius-md);
@@ -103,19 +108,13 @@
   box-shadow: var(--shadow-neon-amber), var(--shadow-card);
 }
 
-/* Left/Right Alternate Spacing */
-.pipeline-node-card:nth-child(odd) {
-  align-self: flex-start;
-}
-
-.pipeline-node-card:nth-child(even) {
-  align-self: flex-end;
-}
-
-/* Central connecting joints/orbs */
+/* Connecting joints/orbs, centred on the pipe */
 .pipeline-joint {
   position: absolute;
   top: 35px;
+  /* the card's 3px accent border-left offsets its padding box from the gutter edge */
+  left: calc(var(--timeline-line-x) - var(--timeline-gutter) - 3px);
+  transform: translateX(-50%);
   width: 16px;
   height: 16px;
   border-radius: var(--radius-full);
@@ -127,16 +126,6 @@
 .pipeline-node-card.accent-cyan .pipeline-joint { border-color: var(--accent-cyan); box-shadow: var(--shadow-neon-cyan); }
 .pipeline-node-card.accent-violet .pipeline-joint { border-color: var(--accent-violet); box-shadow: var(--shadow-neon-violet); }
 .pipeline-node-card.accent-amber .pipeline-joint { border-color: var(--accent-amber); box-shadow: var(--shadow-neon-amber); }
-
-.pipeline-node-card:nth-child(odd) .pipeline-joint {
-  right: -10%; /* Sit on top of pipeline */
-  transform: translateX(50%);
-}
-
-.pipeline-node-card:nth-child(even) .pipeline-joint {
-  left: -10%; /* Sit on top of pipeline */
-  transform: translateX(-50%);
-}
 
 /* Card typography & contents */
 .node-meta {
@@ -166,7 +155,7 @@
 
 .node-loc {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   margin-bottom: 20px;
 }
