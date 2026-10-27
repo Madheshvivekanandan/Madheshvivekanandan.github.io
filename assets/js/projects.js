@@ -16,14 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Coordinates mapping on a 0-100 grid inside parent container
   const nodePositions = {
-    o2c: { x: 22, y: 25, glyph: "🏢", cat: "enterprise" },
-    analyst: { x: 42, y: 18, glyph: "📊", cat: "enterprise" },
-    voice: { x: 18, y: 60, glyph: "🎙️", cat: "ai" },
-    rag: { x: 50, y: 48, glyph: "📂", cat: "ai" },
-    conversational: { x: 74, y: 28, glyph: "💬", cat: "ai" },
-    guvi: { x: 82, y: 58, glyph: "🎓", cat: "ai" },
-    singapore: { x: 44, y: 80, glyph: "🇸🇬", cat: "ml" },
-    copper: { x: 78, y: 72, glyph: "⚡", cat: "ml" }
+    o2c: { x: 16, y: 16, glyph: "🏢", cat: "enterprise" },
+    analyst: { x: 42, y: 12, glyph: "📊", cat: "enterprise" },
+    voice: { x: 88, y: 16, glyph: "🎙️", cat: "ai" },
+    finance: { x: 40, y: 40, glyph: "💰", cat: "ai" },
+    genui: { x: 66, y: 38, glyph: "🧩", cat: "ai" },
+    invoice: { x: 16, y: 50, glyph: "🧾", cat: "ai" },
+    conversational: { x: 88, y: 52, glyph: "💬", cat: "ai" },
+    guvi: { x: 14, y: 80, glyph: "🎓", cat: "ml" },
+    agentloop: { x: 38, y: 74, glyph: "🔁", cat: "ml" },
+    rag: { x: 62, y: 70, glyph: "📂", cat: "ai" },
+    jev: { x: 86, y: 80, glyph: "📏", cat: "ml" }
   };
 
   // Connections (edges) are derived from the projects' tech stacks:
@@ -49,10 +52,21 @@ document.addEventListener("DOMContentLoaded", () => {
     techIndex[p.id] = m;
   });
 
-  function sharedTech(aId, bId) {
+  // Tech used by most projects (Python, FastAPI, React) would link everything
+  // to everything, so it doesn't count toward a link — except when finding a
+  // home for an otherwise unconnected node below.
+  const techCounts = new Map();
+  Object.values(techIndex).forEach(m => {
+    m.forEach((_, key) => techCounts.set(key, (techCounts.get(key) || 0) + 1));
+  });
+  const commonTech = new Set(
+    [...techCounts].filter(([, n]) => n > projectsData.length / 2).map(([key]) => key)
+  );
+
+  function sharedTech(aId, bId, includeCommon = false) {
     const shared = [];
     techIndex[aId].forEach((display, key) => {
-      if (techIndex[bId].has(key)) shared.push(display);
+      if (techIndex[bId].has(key) && (includeCommon || !commonTech.has(key))) shared.push(display);
     });
     return shared;
   }
@@ -76,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let best = null;
     mappedIds.forEach(other => {
       if (other === id) return;
-      const shared = sharedTech(id, other);
+      const shared = sharedTech(id, other, true);
       if (!shared.length) return;
       const sameCat = nodePositions[id].cat === nodePositions[other].cat ? 1 : 0;
       if (!best || shared.length > best.shared.length ||
