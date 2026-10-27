@@ -61,70 +61,27 @@
   color: var(--text-muted);
 }
 
-/* Orbit Node Containers inside panels */
-.cluster-orbs-wrap {
+/* Skill chips inside panels */
+.cluster-chips {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
   z-index: 2;
 }
 
-/* Individual glowing skill nodes */
-.skill-orb-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-}
-
-.skill-orb-name {
-  font-size: 0.95rem;
-  color: var(--text-primary);
+.skill-chip {
   font-family: var(--font-display);
+  font-size: 0.85rem;
   font-weight: 500;
-}
-
-.skill-bar-wrap {
-  width: 100px;
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  padding: 6px 12px;
   border-radius: var(--radius-full);
-  overflow: hidden;
-  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color var(--transition-normal), color var(--transition-normal);
 }
 
-.skill-bar-fill {
-  height: 100%;
-  border-radius: var(--radius-full);
-  width: 0; /* Dynamic loading in skills.js */
-  transition: width 1.5s cubic-bezier(0.1, 0.8, 0.25, 1);
-}
-
-/* Colors for levels */
-.level-expert {
-  background: var(--accent-cyan);
-  box-shadow: var(--shadow-neon-cyan);
-}
-
-.level-advanced {
-  background: var(--accent-violet);
-  box-shadow: var(--shadow-neon-violet);
-}
-
-.level-intermediate {
-  background: var(--accent-amber);
-  box-shadow: var(--shadow-neon-amber);
-}
-
-.level-beginner {
-  background: var(--text-muted);
-}
-
-.skill-orb-level {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.5px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  margin-top: 2px;
+.skill-chip:hover {
+  border-color: rgba(0, 240, 255, 0.35);
+  color: var(--accent-cyan);
 }

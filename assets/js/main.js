@@ -62,9 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="node-role font-display">${exp.role}</div>
         <div class="node-loc font-mono">${exp.location}</div>
+        ${exp.details.length ? `
         <ul class="node-bullets">
           ${exp.details.map(detail => `<li>${detail}</li>`).join('')}
-        </ul>
+        </ul>` : ''}
       `;
 
       container.appendChild(card);

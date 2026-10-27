@@ -133,7 +133,10 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 4px 8px;
   border-radius: var(--radius-sm);
-  white-space: nowrap;
+  /* Wrap long titles so neighbouring labels and map edges don't clip them */
+  width: max-content;
+  max-width: 140px;
+  text-align: center;
   letter-spacing: 1px;
   pointer-events: none;
   opacity: 0.8;

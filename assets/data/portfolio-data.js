@@ -2,17 +2,16 @@
 window.PORTFOLIO_DATA = {
   profile: {
     name: "Madhesh Vivekanandan",
-    title: "AI Systems Architect & Backend Engineer",
+    title: "GenAI Software Engineer",
     taglines: [
       "Building Intelligent Systems",
-      "Architecting AI Pipelines",
-      "Orchestrating Multi-Agent Flows",
-      "Engineering Core Backend Engines"
+      "Designing LLM Pipelines",
+      "Orchestrating Agentic Workflows",
+      "Engineering Python Backends"
     ],
     summary: "GenAI-focused Software Engineer with a strong foundation in Python backend development and intelligent LLM-driven systems. Experienced in building scalable APIs, agent-like workflows, and retrieval-based AI applications that transform natural language inputs into accurate, actionable outputs. Comfortable working across the full lifecycle of GenAI solutions, from problem understanding and system design to implementation and validation in real-world environments.",
     location: "Chennai, India",
     email: "madheshvivekanandan@gmail.com",
-    phone: "6374051514",
     github: "Madheshvivekanandan",
     linkedin: "madhesh-vivekanandan",
     blog: {
@@ -25,7 +24,7 @@ window.PORTFOLIO_DATA = {
       }
     }
   },
-  
+
   experience: [
     {
       id: "tarka",
@@ -35,12 +34,12 @@ window.PORTFOLIO_DATA = {
       location: "Chennai, India",
       accent: "cyan",
       details: [
-        "Architect Python backend systems featuring scalable API design and modular architecture.",
-        "Implement advanced LLM-powered workflows, including prompt engineering, API orchestration, and vector tools.",
-        "Design multi-step agentic reasoning flows utilizing dynamic tool invocation and auto-evaluation layers.",
-        "Collaborate on frontend workflow design for AI-powered web apps using modern React-based architectures.",
-        "Integrate core AI capabilities into enterprise platforms using Docker containerization and AWS/Azure deployment.",
-        "Establish comprehensive validation and evaluation test suites for backend services and AI-driven agents."
+        "Work on Python backend systems with a focus on scalable API design, modular architecture, and maintainability.",
+        "Contribute to LLM-powered workflows, including prompt engineering, API orchestration, tool integration, and response handling.",
+        "Help design multi-step agentic reasoning flows where the system decides when to retrieve data, invoke tools, or generate a response.",
+        "Collaborate on frontend workflow design and user experience for AI-powered web apps built with React.",
+        "Integrate AI capabilities into enterprise applications, and take part in deployment, containerization, and environment setup for production.",
+        "Contribute to testing and validation workflows for backend services and AI-driven features."
       ]
     },
     {
@@ -51,180 +50,188 @@ window.PORTFOLIO_DATA = {
       location: "Chennai, India",
       accent: "violet",
       details: [
-        "Worked as a shadow developer on an enterprise-scale Nissan Supply Chain Management platform.",
-        "Acquired experience in mainframe background environment: job scheduling, batch processing, and JCL workflows.",
-        "Assisted senior engineers in writing, debugging, and validating mission-critical background jobs.",
-        "Identified optimization opportunities in legacy batch runs, reducing processing footprints."
+        "Shadow resource on an enterprise Nissan Supply Chain Management project.",
+        "Worked closely with senior mainframe developers to learn batch job processing, background job execution, and enterprise workflows.",
+        "Assisted in writing and validating background jobs under guidance."
       ]
     },
     {
       id: "srit",
       role: "BE Computer Science & Engineering",
       company: "Sri Ramakrishna Institute of Technology",
-      period: "2020 – 2024",
+      period: "Sep 2020 – May 2024",
       location: "Coimbatore, India",
       accent: "amber",
-      details: [
-        "Graduated with a strong academic record in Computer Science principles, algorithms, and databases.",
-        "Specialized in machine learning course tracks and engineered custom classification models.",
-        "Active member of the core tech committee, coordinating workshops on cloud computing and Git."
-      ]
+      details: []
     }
   ],
 
   skills: {
-    ai: [
-      { name: "RAG Systems", level: "Expert" },
-      { name: "Agentic Workflows", level: "Expert" },
-      { name: "n8n Automation", level: "Expert" },
-      { name: "LLM APIs (OpenAI, Claude)", level: "Expert" },
-      { name: "Azure OpenAI", level: "Intermediate" },
-      { name: "Hugging Face", level: "Intermediate" },
-      { name: "Ollama (Local LLMs)", level: "Advanced" }
-    ],
-    backend: [
-      { name: "Python", level: "Expert" },
-      { name: "FastAPI", level: "Expert" },
-      { name: "REST APIs", level: "Expert" },
-      { name: "GraphQL", level: "Intermediate" },
-      { name: "SQLAlchemy ORM", level: "Advanced" },
-      { name: "Shell Scripting", level: "Advanced" }
-    ],
-    frontend: [
-      { name: "React.js", level: "Advanced" },
-      { name: "React Native", level: "Intermediate" },
-      { name: "JavaScript (ES6+)", level: "Expert" },
-      { name: "HTML5 / CSS3", level: "Expert" }
-    ],
-    devops: [
-      { name: "Docker", level: "Advanced" },
-      { name: "Git / GitHub", level: "Expert" },
-      { name: "Linux Administration", level: "Advanced" },
-      { name: "Postman API Testing", level: "Expert" }
-    ],
-    databases: [
-      { name: "PostgreSQL", level: "Advanced" },
-      { name: "Qdrant Vector DB", level: "Advanced" },
-      { name: "MySQL", level: "Advanced" },
-      { name: "Adabas", level: "Beginner" }
-    ]
+    ai: ["RAG", "Agentic Workflows", "LangGraph", "LLM APIs (OpenAI, Azure OpenAI)", "Hugging Face", "Ollama", "Docling"],
+    backend: ["Python", "FastAPI", "REST APIs", "GraphQL", "SQLAlchemy"],
+    frontend: ["React.js", "React Native", "JavaScript", "HTML / CSS"],
+    devops: ["Docker", "Git / GitHub", "n8n", "Linux", "Shell Scripting", "Postman"],
+    databases: ["PostgreSQL", "MySQL", "Qdrant", "Adabas"]
   },
 
   projects: [
     {
       id: "o2c",
-      title: "Agentic Order-to-Cash Automation Platform",
-      tech: ["N8N", "Python", "FastAPI", "React.js", "PostgreSQL", "Azure OpenAI", "Docker"],
+      title: "Agentic Order-to-Cash Platform",
+      tech: ["n8n", "Python", "FastAPI", "React.js", "PostgreSQL", "Azure OpenAI", "Docling", "Docker"],
       category: "Enterprise AI / Agentic Systems",
       type: "internal",
       link: null,
-      description: "An enterprise-grade O2C automation platform designed to process unstructured customer inquiry emails and Purchase Order PDFs into highly structured, validated, and ERP-ready order records.",
+      description: "An agentic Order-to-Cash (O2C) automation platform that turns customer inquiry emails and purchase order PDFs into validated, ERP-ready order entries.",
       highlights: [
-        "Orchestrated complex multi-agent workflows using n8n node-based flows.",
-        "Integrated Microsoft Azure OpenAI combined with IBM Docling for deep PDF document structure parsing.",
-        "Built a modular FastAPI backend with transactional validation nodes stored in PostgreSQL.",
-        "Created an interactive React-based verification dashboard for human-in-the-loop validation of low-confidence entries."
+        "Orchestrates multi-step n8n workflows with Azure OpenAI, IBM Docling, and the Microsoft Graph API to extract and validate unstructured email and document data.",
+        "Reconciles extracted orders against the Odoo ERP system, with real-time product matching.",
+        "Modular FastAPI backend with PostgreSQL-based validation workflows.",
+        "React dashboard for human-in-the-loop verification of extracted orders."
       ]
     },
     {
       id: "analyst",
       title: "Agentic Data Analyst",
-      tech: ["Python", "React.js", "Docker", "OpenAI", "MLflow", "DSPy"],
+      tech: ["Python", "FastAPI", "React.js", "OpenAI", "MLflow", "pytest", "Docker"],
       category: "AI Analytics / Agentic Systems",
       type: "internal",
       link: null,
-      description: "A state-of-the-art GenAI-powered analytics engine enabling business stakeholders to perform queries against corporate data warehouses in plain conversational English.",
+      description: "A GenAI analytics platform: ask a data warehouse a question in plain English and get back executable SQL, tables, charts, and summaries.",
       highlights: [
-        "Designed a multi-step DSPy-inspired agentic execution graph that manages query parsing, schema validation, entity resolution, and SQL creation.",
-        "Incorporated an advanced ThinkingSignature layer that reveals the agent's logic steps prior to displaying charts/data.",
-        "Configured MLflow integration to monitor LLM latencies, prompt variables, and token expenditure dynamics.",
-        "Wrote an extensive Pytest suite validating code robustness against mock warehouse schemas."
+        "Multi-step agentic workflow inspired by DSPy: query interpretation, entity extraction, ambiguity detection, workflow planning, SQL generation, execution, and summarization.",
+        "A ThinkingSignature layer reformulates user intent before SQL generation to improve accuracy.",
+        "Agent decision logic chooses whether to return a raw query, a visualization, or an analytical summary.",
+        "MLflow tracks LLM calls, agent decisions, SQL executions, and artifacts; pytest runs natural-language test cases."
+      ]
+    },
+    {
+      id: "genui",
+      title: "Generative UI Dashboard",
+      tech: ["Python", "FastAPI", "OpenAI", "React", "A2UI", "SSE"],
+      category: "Generative UI / Agents",
+      type: "github",
+      link: "https://github.com/Madheshvivekanandan/Generative-Ui",
+      description: "An agent composes a financial dashboard for each question and streams it to the browser as A2UI v0.9 protocol messages, with no agent framework in between.",
+      highlights: [
+        "OpenAI structured outputs constrained to a fixed component catalog, so the model can never send markup or code; the catalog is the security boundary.",
+        "Streams createSurface, updateDataModel, and updateComponents messages over SSE, rendered by @a2ui/react.",
+        "Every answer re-composes one canvas in place, and buttons on generated cards send actions back to the agent.",
+        "Sibling POCs explore the same idea: signal-genui-poc (design-system molecules over A2UI) and genui-studio (Vercel AI SDK + json-render on Next.js)."
+      ]
+    },
+    {
+      id: "finance",
+      title: "LangGraph Finance Assistant",
+      tech: ["Python", "FastAPI", "LangGraph", "PostgreSQL", "React", "TypeScript", "OpenAI", "Docker"],
+      category: "Agents / Personal Finance",
+      type: "github",
+      link: "https://github.com/Madheshvivekanandan/langgraph-finance-assistant",
+      description: "Upload bank statements, get every transaction categorized, see where the money went, and chat with a LangGraph agent about your spending.",
+      highlights: [
+        "Two-stage categorization: deterministic keyword rules first, then one batched OpenAI call for the leftovers, with the category set enforced by the response schema.",
+        "FastAPI with SQLAlchemy and Alembic on Postgres, problem+json (RFC 9457) errors, and keyset pagination.",
+        "Vite + React + TypeScript dashboard; the whole stack runs with Docker Compose.",
+        "CI runs ruff, mypy, import-linter, and pytest on every push."
+      ]
+    },
+    {
+      id: "invoice",
+      title: "Invoice Analytics Platform",
+      tech: ["Python", "Docling", "GLiNER", "PostgreSQL", "SQLAlchemy", "Streamlit", "Docker"],
+      category: "Document AI / Analytics",
+      type: "github",
+      link: "https://github.com/Madheshvivekanandan/invoice-analytics-platform",
+      description: "Upload a PDF or image invoice and get structured, quality-scored data and spend analytics.",
+      highlights: [
+        "Docling parses layout, tables, and OCR; GLiNER extracts vendor, dates, amounts, and line items.",
+        "Validates output into clean JSON with a quality score, and logs every pipeline stage for a full audit trail.",
+        "Five Streamlit pages, including an analytics dashboard with 11 Plotly charts.",
+        "Fully containerised with Docker Compose, PostgreSQL, and pgAdmin."
       ]
     },
     {
       id: "voice",
-      title: "voice_ai",
-      tech: ["Python", "SpeechRecognition", "Pyttsx3", "LLMs"],
-      category: "AI / Voice Interfaces",
+      title: "Real-Time Voice Agent",
+      tech: ["Python", "FastAPI", "WebSockets", "React", "Sarvam AI"],
+      category: "Voice AI / Real-Time",
       type: "github",
       link: "https://github.com/Madheshvivekanandan/voice_ai",
-      description: "A highly responsive, voice-controlled virtual intelligence companion capable of running desktop operations and answering complex questions through audio commands.",
+      description: "A turn-based voice agent for phone-call-style conversations in Tamil: browser audio streams over a WebSocket through speech-to-text, an LLM, and text-to-speech.",
       highlights: [
-        "Implemented real-time local audio recording and speech-to-text transcription.",
-        "Structured offline response pathways and online LLM synthesis triggers depending on network availability.",
-        "Constructed shell automation scripts enabling voice-activated file navigation and system stats reporting."
+        "React + Vite tester captures the mic, resamples to 16 kHz PCM, and streams it to a FastAPI WebSocket server.",
+        "A state machine (agent speaking, user speaking, processing) drops mic audio while the agent talks to prevent echo.",
+        "Sarvam Saaras v3 for streaming STT with voice-activity events, Sarvam Chat v2 with a rolling 10-turn history, and Bulbul v3 for TTS."
       ]
     },
     {
       id: "rag",
       title: "RAG Document Q&A System",
-      tech: ["Python", "Qdrant DB", "React.js", "FastAPI", "SentenceTransformers"],
+      tech: ["Python", "FastAPI", "Qdrant", "SentenceTransformers", "React"],
       category: "RAG / Knowledge Systems",
       type: "github",
       link: "https://github.com/Madheshvivekanandan/RAG-Based-Document-Question-Answering-System",
-      description: "An advanced Retrieval-Augmented Generation (RAG) backend and frontend that parses custom documents and produces contextually grounded answers without hallucination.",
+      description: "A full-stack RAG system: upload documents, ask questions in natural language, and get answers grounded in the most relevant passages.",
       highlights: [
-        "Engineered a PDF parsing pipeline extracting text and structured tables with SentenceTransformers embeddings.",
-        "Leveraged Qdrant Vector Database to support rapid cosine-similarity search against semantic text chunks.",
-        "Exposed modular query retrieval routes through a low-latency FastAPI backend.",
-        "Created a React-based interface showing semantic context snippets that contributed to the final LLM answer."
+        "Ingests PDF, TXT, and Markdown files, chunks them, and embeds the chunks with Sentence Transformers.",
+        "Stores vectors in Qdrant and retrieves the most relevant chunks at query time to ground the LLM's answer.",
+        "FastAPI backend with automatic API docs; React + Vite front end."
       ]
     },
     {
       id: "conversational",
       title: "LLM Conversational Assistant",
-      tech: ["Python", "React.js", "FastAPI", "OpenAI API", "SSE Streams"],
+      tech: ["Python", "FastAPI", "SQLAlchemy", "React", "LLM APIs"],
       category: "LLM / Conversational AI",
       type: "github",
       link: "https://github.com/Madheshvivekanandan/LLM-Powered-Conversational-Assistant",
-      description: "A clean, full-stack AI messaging environment featuring customized agent personas, sliding message buffers, and token cost tracking.",
+      description: "A full-stack assistant for question answering and text summarization through a web chat interface.",
       highlights: [
-        "Designed few-shot and role-based prompt configurations with system message injects.",
-        "Implemented low-latency streaming responses via Server-Sent Events (SSE) from FastAPI to the React client.",
-        "Designed responsive message styling including custom Markdown parser and terminal syntax highlighting."
+        "Zero-shot, few-shot, and role-based prompting for consistent, context-aware responses.",
+        "FastAPI backend orchestrates LLM calls and request/response flows, with Pydantic schemas and SQLAlchemy models.",
+        "Persistent chat sessions and history; React front end with Markdown rendering."
+      ]
+    },
+    {
+      id: "jev",
+      title: "Jev vs Cosine Benchmark",
+      tech: ["Python", "SentenceTransformers", "scikit-learn", "Cross-Encoders"],
+      category: "LLM Evaluation / Benchmarks",
+      type: "github",
+      link: "https://github.com/Madheshvivekanandan/jev-vs-cosine",
+      description: "A $0, reproducible benchmark on Banking77 intent routing: does TypeSafe AI's Jev beat plain embedding cosine similarity, and how many labelled examples does a free method need to catch up?",
+      highlights: [
+        "Compares five methods across 77 intent categories: cosine vs descriptions, Jev, cosine voting over past examples, logistic regression on embeddings, and a cross-encoder reranker.",
+        "Preliminary result: with no examples Jev leads cosine by about 11 points, but a free logistic-regression classifier matches it with 5 labelled examples per category.",
+        "Pinned model revisions and resumable runs, so the numbers can be reproduced."
+      ]
+    },
+    {
+      id: "agentloop",
+      title: "agent-loop",
+      tech: ["Agent Skills", "Claude Code", "Codex", "Cursor", "Shell"],
+      category: "Developer Tooling / Coding Agents",
+      type: "github",
+      link: "https://github.com/Madheshvivekanandan/agent-loop",
+      description: "A staged loop for coding agents (triage, analyze, plan, implement, verify, debug), packaged as one Agent Skills folder that runs in Claude Code, Codex, Cursor, and 30+ other clients.",
+      highlights: [
+        "Triage sizes the process: a one-line fix skips analysis and planning entirely.",
+        "Each stage gets a fresh context and hands off through markdown artifacts that double as an audit log.",
+        "The verifier sees only the plan and the diff and cannot edit code; the debug loop escalates to a human after 3 iterations.",
+        "Companion repo ai-engineering-skills packages coding standards (Python, React, SQL, API design, Docker, git) as portable skills."
       ]
     },
     {
       id: "guvi",
       title: "Guvi_GPT",
-      tech: ["Jupyter Notebook", "Python", "OpenAI Core", "Prompt Engineering"],
-      category: "AI / Education Systems",
+      tech: ["Python", "GPT-2", "Hugging Face Transformers", "Streamlit"],
+      category: "LLM Fine-Tuning / Deployment",
       type: "github",
       link: "https://github.com/Madheshvivekanandan/Guvi_GPT",
-      description: "An intelligent educational coding assistant tailored specifically for curriculum support and student debugging queries.",
+      description: "A GPT-2 model fine-tuned on GUVI's company data and deployed to Hugging Face Spaces behind a Streamlit web app.",
       highlights: [
-        "Engineered specialized prompting modules to restrict responses to guided troubleshooting rather than providing raw solutions.",
-        "Built code evaluation filters analyzing student inputs for syntax issues prior to sending prompts to the LLM.",
-        "Configured a notebook workflow to test response variations across prompt templates."
-      ]
-    },
-    {
-      id: "singapore",
-      title: "Singapore Resale Flat Price Predictor",
-      tech: ["Python", "Pandas", "Scikit-learn", "Streamlit", "DecisionTreeRegressor"],
-      category: "ML / Data Science",
-      type: "github",
-      link: "https://github.com/Madheshvivekanandan/Singapore-Resale-Flat-Prices-Predicting",
-      description: "A machine learning regression model deployed inside an interactive Streamlit dashboard to predict HDB resale flat prices using historical transaction logs.",
-      highlights: [
-        "Cleaned and analyzed over 10 years of public transaction logs from Singapore's housing database.",
-        "Conducted extensive feature engineering focusing on town categories, lease age, floor levels, and proximity indexes.",
-        "Trained and cross-validated predictive models, selecting a high-accuracy DecisionTreeRegressor.",
-        "Designed a gorgeous Streamlit dashboard with interactive sliders for immediate prediction estimates."
-      ]
-    },
-    {
-      id: "copper",
-      title: "Industrial Copper Modeling",
-      tech: ["Jupyter Notebook", "Python", "Scikit-learn", "Pandas", "Matplotlib"],
-      category: "ML / Industrial Modeling",
-      type: "github",
-      link: "https://github.com/Madheshvivekanandan/Industrial-Copper-Modeling",
-      description: "An industrial forecasting model analyzing material logs to predict transaction prices and status markers.",
-      highlights: [
-        "Analyzed highly noisy industrial sheets containing skewness and structural anomalies.",
-        "Developed a pipeline executing Box-Cox transformations, robust outlier handling, and vector scalers.",
-        "Trained twin models: a regression model to estimate pricing and a classification model to assess deals (Won/Lost)."
+        "Cleaned and tokenized GUVI text content with the GPT-2 tokenizer, then fine-tuned with Hugging Face Transformers.",
+        "Deployed as a Streamlit app on Hugging Face Spaces, with login tracking."
       ]
     }
   ]
