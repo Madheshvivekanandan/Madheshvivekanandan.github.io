@@ -58,6 +58,8 @@ The radial hub nav (and the 1–6 keyboard shortcuts) maps to these anchors.
   needs a crawlable favicon that is a multiple of 48px.
 - Photos are JPEG with explicit `width`/`height`; the hero image loads with
   `fetchpriority="high"`, the about photo lazily.
+- [google4cf08a030ade5e11.html](google4cf08a030ade5e11.html) verifies the site in Google
+  Search Console. Google re-checks it periodically, so never delete or rename it.
 
 ## Contact form (`signal_transmission.io`)
 
