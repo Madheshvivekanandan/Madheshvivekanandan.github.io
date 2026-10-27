@@ -540,11 +540,53 @@
   border: var(--border-card);
   border-left: 2px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
-  padding: 24px 22px;
+  padding: 20px 22px;
   box-shadow: var(--shadow-card);
+}
+
+.mobile-card-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.mobile-card-summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-card-summary .details-desc {
+  display: block;
+}
+
+/* Two lines while collapsed; the full description once opened */
+.mobile-project-card:not([open]) .details-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mobile-card-toggle::before {
+  content: '> show_details';
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--accent-cyan);
+}
+
+.mobile-project-card[open] .mobile-card-toggle::before {
+  content: '> hide_details';
+}
+
+.mobile-card-body {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.06);
 }
 
 .mobile-project-card.cat-enterprise {

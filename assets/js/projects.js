@@ -171,7 +171,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const cat = pos ? pos.cat : "ai";
       const glyph = pos ? pos.glyph : "◆";
 
-      const card = document.createElement("article");
+      // Collapsed by default so eleven projects don't take half the page;
+      // the summary keeps what a skim needs, the body holds the detail
+      const card = document.createElement("details");
       card.className = `mobile-project-card cat-${cat}`;
 
       const techPills = proj.tech
@@ -188,15 +190,20 @@ document.addEventListener("DOMContentLoaded", () => {
           : "";
 
       card.innerHTML = `
-        <div class="mobile-card-head">
-          <span class="node-glyph">${glyph}</span>
-          <div class="details-category">${proj.category}</div>
+        <summary class="mobile-card-summary">
+          <span class="mobile-card-head">
+            <span class="node-glyph">${glyph}</span>
+            <span class="details-category">${proj.category}</span>
+          </span>
+          <h3 class="details-title font-display">${proj.title}</h3>
+          <span class="details-desc">${proj.description}</span>
+          <span class="details-tech-row">${techPills}</span>
+          <span class="mobile-card-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="mobile-card-body">
+          <ul class="details-highlights">${bullets}</ul>
+          <div class="details-actions">${action}</div>
         </div>
-        <h3 class="details-title font-display">${proj.title}</h3>
-        <div class="details-tech-row">${techPills}</div>
-        <p class="details-desc">${proj.description}</p>
-        <ul class="details-highlights">${bullets}</ul>
-        <div class="details-actions">${action}</div>
       `;
 
       mobileList.appendChild(card);
@@ -256,6 +263,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("neural-system-ready", () => {
     setTimeout(drawConnections, 300);
   });
+
+  // Open on the first project so the details panel is never empty on arrival
+  if (projectsData.length && nodePositions[projectsData[0].id]) {
+    selectProject(projectsData[0].id);
+  }
 
   // Hover / Selection Highlight Logic
   function highlightConnections(projId) {
