@@ -36,6 +36,19 @@
     grid-template-columns: 1fr;
     gap: 50px;
   }
+
+  /* Narrower top bar: drop the shortcut numbers so six labels fit beside the brand */
+  .site-nav {
+    padding: 0 6%;
+  }
+
+  .nav-item {
+    padding: 8px;
+  }
+
+  .nav-num {
+    display: none;
+  }
 }
 
 /* ==========================================================================
@@ -119,84 +132,52 @@
     display: flex; /* Reveal the tappable project list */
   }
 
-  /* 4. Radial Navigation morphs into Fixed App Tab Bar */
-  .neural-hub {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100vw;
-    height: 60px;
-    background: rgba(10, 14, 26, 0.95);
-    border-top: 1px solid rgba(0, 240, 255, 0.15);
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0;
-    padding: 0;
-    z-index: 99999;
-  }
-
-  .hub-trigger {
-    display: none !important; /* Hide central button */
-  }
-
-  .hub-menu {
-    position: relative;
+  /* 4. Top nav bar moves to a fixed bottom tab bar */
+  .site-nav {
     top: auto;
-    left: auto;
-    transform: none;
+    bottom: 0;
+    padding: 0 4px;
+    border-bottom: none;
+    border-top: 1px solid rgba(0, 240, 255, 0.15);
+    background: rgba(10, 14, 26, 0.95);
+  }
+
+  .nav-brand {
+    display: none;
+  }
+
+  .nav-links {
     width: 100%;
     height: 100%;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    display: flex;
     justify-content: space-around;
-    align-items: center;
-    padding: 0 10px;
+    gap: 0;
   }
 
-  .hub-item {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    width: 40px;
-    height: 40px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    display: flex;
+  .nav-item {
+    flex: 1;
+    height: 100%;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    color: var(--text-muted);
+    justify-content: center;
+    gap: 2px;
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.75rem;
   }
 
-  .hub-item span {
-    font-size: 0.85rem;
-  }
-
-  .hub-item.active {
-    color: var(--accent-cyan);
-    text-shadow: var(--shadow-neon-cyan);
+  .nav-item:hover {
     background: transparent;
   }
-  
-  .hub-item.active::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    width: 16px;
-    height: 2px;
-    background-color: var(--accent-cyan);
-    box-shadow: var(--shadow-neon-cyan);
-    border-radius: var(--radius-full);
+
+  .nav-item .nav-num {
+    display: inline;
   }
 
-  .hub-tooltip {
-    display: none !important; /* Hide tooltip on mobile */
+  .nav-item.active::after {
+    top: 0;
+    bottom: auto;
+    left: 30%;
+    right: 30%;
   }
 
   .footer-container {

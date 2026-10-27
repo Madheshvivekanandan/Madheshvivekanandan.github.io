@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Expansion triggers on buttons, links, interactive objects.
   // Delegated listeners cover dynamically added nodes (GitHub repos, linked chips)
   // without rescanning the whole DOM on every mutation.
-  const interactiveSelectors = 'a, button, .project-node, .hub-trigger, .contact-node-link';
+  const interactiveSelectors = 'a, button, .project-node, .contact-node-link';
 
   document.addEventListener("mouseover", (e) => {
     if (e.target.closest(interactiveSelectors)) {
