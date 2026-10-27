@@ -12,7 +12,6 @@ window.PORTFOLIO_DATA = {
     summary: "GenAI-focused Software Engineer with a strong foundation in Python backend development and intelligent LLM-driven systems. Experienced in building scalable APIs, agent-like workflows, and retrieval-based AI applications that transform natural language inputs into accurate, actionable outputs. Comfortable working across the full lifecycle of GenAI solutions, from problem understanding and system design to implementation and validation in real-world environments.",
     location: "Chennai, India",
     email: "madheshvivekanandan@gmail.com",
-    phone: "6374051514",
     github: "Madheshvivekanandan",
     linkedin: "madhesh-vivekanandan",
     blog: {
