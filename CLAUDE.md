@@ -46,6 +46,19 @@ The radial hub nav (and the 1–6 keyboard shortcuts) maps to these anchors.
 - To preview locally, serve the folder over HTTP (e.g. `python3 -m http.server`) rather
   than opening the file directly, so `fetch`/relative paths behave.
 
+## SEO
+
+- `<head>` in [index.html](index.html) carries the canonical URL, Open Graph / Twitter share
+  tags (image: `assets/images/og-card.jpg`, 1200×630) and a JSON-LD `@graph`
+  (WebSite, ProfilePage, Person). Keep the Person's `sameAs` profile links and
+  `jobTitle` in step with the contact section and resume.
+- [robots.txt](robots.txt) points crawlers at [sitemap.xml](sitemap.xml). When content
+  changes, bump the sitemap `<lastmod>` and the ProfilePage `dateModified`.
+- Favicons: `favicon.ico` (48px, root) plus `assets/icons/` (192px, Apple touch). Google
+  needs a crawlable favicon that is a multiple of 48px.
+- Photos are JPEG with explicit `width`/`height`; the hero image loads with
+  `fetchpriority="high"`, the about photo lazily.
+
 ## Contact form (`signal_transmission.io`)
 
 The contact form ([assets/js/contact.js](assets/js/contact.js)) delivers messages via

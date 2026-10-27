@@ -1,5 +1,5 @@
 /* BASE & GLOBAL STYLES */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+/* Web fonts load from <link> tags in index.html (with preconnect), not @import, so they don't wait for this file */
 
 body {
   font-family: var(--font-body);
