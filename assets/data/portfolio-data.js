@@ -2,12 +2,12 @@
 window.PORTFOLIO_DATA = {
   profile: {
     name: "Madhesh Vivekanandan",
-    title: "AI Systems Architect & Backend Engineer",
+    title: "GenAI Software Engineer",
     taglines: [
       "Building Intelligent Systems",
-      "Architecting AI Pipelines",
-      "Orchestrating Multi-Agent Flows",
-      "Engineering Core Backend Engines"
+      "Designing LLM Pipelines",
+      "Orchestrating Agentic Workflows",
+      "Engineering Python Backends"
     ],
     summary: "GenAI-focused Software Engineer with a strong foundation in Python backend development and intelligent LLM-driven systems. Experienced in building scalable APIs, agent-like workflows, and retrieval-based AI applications that transform natural language inputs into accurate, actionable outputs. Comfortable working across the full lifecycle of GenAI solutions, from problem understanding and system design to implementation and validation in real-world environments.",
     location: "Chennai, India",
@@ -24,7 +24,7 @@ window.PORTFOLIO_DATA = {
       }
     }
   },
-  
+
   experience: [
     {
       id: "tarka",
@@ -34,12 +34,12 @@ window.PORTFOLIO_DATA = {
       location: "Chennai, India",
       accent: "cyan",
       details: [
-        "Architect Python backend systems featuring scalable API design and modular architecture.",
-        "Implement advanced LLM-powered workflows, including prompt engineering, API orchestration, and vector tools.",
-        "Design multi-step agentic reasoning flows utilizing dynamic tool invocation and auto-evaluation layers.",
-        "Collaborate on frontend workflow design for AI-powered web apps using modern React-based architectures.",
-        "Integrate core AI capabilities into enterprise platforms using Docker containerization and AWS/Azure deployment.",
-        "Establish comprehensive validation and evaluation test suites for backend services and AI-driven agents."
+        "Work on Python backend systems with a focus on scalable API design, modular architecture, and maintainability.",
+        "Contribute to LLM-powered workflows, including prompt engineering, API orchestration, tool integration, and response handling.",
+        "Help design multi-step agentic reasoning flows where the system decides when to retrieve data, invoke tools, or generate a response.",
+        "Collaborate on frontend workflow design and user experience for AI-powered web apps built with React.",
+        "Integrate AI capabilities into enterprise applications, and take part in deployment, containerization, and environment setup for production.",
+        "Contribute to testing and validation workflows for backend services and AI-driven features."
       ]
     },
     {
@@ -50,24 +50,19 @@ window.PORTFOLIO_DATA = {
       location: "Chennai, India",
       accent: "violet",
       details: [
-        "Worked as a shadow developer on an enterprise-scale Nissan Supply Chain Management platform.",
-        "Acquired experience in mainframe background environment: job scheduling, batch processing, and JCL workflows.",
-        "Assisted senior engineers in writing, debugging, and validating mission-critical background jobs.",
-        "Identified optimization opportunities in legacy batch runs, reducing processing footprints."
+        "Shadow resource on an enterprise Nissan Supply Chain Management project.",
+        "Worked closely with senior mainframe developers to learn batch job processing, background job execution, and enterprise workflows.",
+        "Assisted in writing and validating background jobs under guidance."
       ]
     },
     {
       id: "srit",
       role: "BE Computer Science & Engineering",
       company: "Sri Ramakrishna Institute of Technology",
-      period: "2020 – 2024",
+      period: "Sep 2020 – May 2024",
       location: "Coimbatore, India",
       accent: "amber",
-      details: [
-        "Graduated with a strong academic record in Computer Science principles, algorithms, and databases.",
-        "Specialized in machine learning course tracks and engineered custom classification models.",
-        "Active member of the core tech committee, coordinating workshops on cloud computing and Git."
-      ]
+      details: []
     }
   ],
 
