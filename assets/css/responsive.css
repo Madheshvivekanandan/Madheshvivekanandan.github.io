@@ -47,7 +47,8 @@
   }
 
   .section-title-mono {
-    font-size: 1.4rem;
+    font-size: 1.2rem; /* fits skills_constellation.orbit on one line at 375px */
+    overflow-wrap: anywhere; /* narrower phones wrap instead of clipping */
   }
 
   /* 1. Hero Layout Stacked — compact so the CTAs land on the first screen */
