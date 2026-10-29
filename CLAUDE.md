@@ -53,7 +53,8 @@ The radial hub nav (and the 1–6 keyboard shortcuts) maps to these anchors.
   (WebSite, ProfilePage, Person). Keep the Person's `sameAs` profile links and
   `jobTitle` in step with the contact section and resume.
 - [robots.txt](robots.txt) points crawlers at [sitemap.xml](sitemap.xml). When content
-  changes, bump the sitemap `<lastmod>` and the ProfilePage `dateModified`.
+  changes, bump the sitemap `<lastmod>` and the ProfilePage `dateModified` (a full
+  datetime with timezone, e.g. `2026-10-27T00:00:00+05:30`; Google rejects a bare date).
 - Favicons: `favicon.ico` (48px, root) plus `assets/icons/` (192px, Apple touch). Google
   needs a crawlable favicon that is a multiple of 48px.
 - Photos are JPEG with explicit `width`/`height`; the hero image loads with
